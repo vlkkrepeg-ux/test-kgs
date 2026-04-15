@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест конституции тела | Восточная медицина</title>
+    <title>Центр диагностики тела | Восточная медицина</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
         }
         .serif {
             font-family: 'Cormorant Garamond', serif;
@@ -42,21 +43,19 @@
         .type-winter { background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%); }
         .type-mixed { background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%); }
         
-        .pulse-animation {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .7; }
-        }
+        .zone-liver { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); }
+        .zone-pelvis { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); }
+        .zone-chest { background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
+        
+        .hidden { display: none !important; }
     </style>
 </head>
-<body class="min-h-screen text-gray-800">
+<body class="text-gray-800">
 
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full top-0 z-50">
         <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="serif text-2xl font-bold text-gray-800">🌿 Тест конституции тела</h1>
+            <h1 class="serif text-2xl font-bold text-gray-800">🌿 Диагностика тела</h1>
             <div id="progress-container" class="hidden flex-1 mx-8">
                 <div class="flex justify-between text-xs mb-1 text-gray-600">
                     <span>Прогресс</span>
@@ -69,724 +68,816 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="pt-24 pb-12 px-4 max-w-4xl mx-auto">
         
-        <!-- Intro Screen -->
-        <div id="intro-screen" class="fade-in">
-            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center">
+        <!-- Main Menu -->
+        <div id="main-menu" class="fade-in">
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center mb-8">
                 <div class="mb-6 text-6xl">🧘‍♀️</div>
-                <h2 class="serif text-4xl font-bold mb-4 text-gray-900">Определение типа конституции</h2>
+                <h2 class="serif text-4xl font-bold mb-4 text-gray-900">Центр диагностики</h2>
                 <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                    Этот тест основан на принципах восточной медицины поможет определить ваше текущее состояние 
-                    и даст персональный план действий на ближайшие 2 недели.
+                    Выберите тест, который хотите пройти. Оба теста основаны на принципах восточной медицины 
+                    и помогут составить персональный план восстановления.
                 </p>
-                
-                <div class="bg-purple-50 rounded-xl p-6 mb-8 text-left">
-                    <h3 class="font-semibold text-purple-900 mb-3">📋 Инструкция:</h3>
-                    <ul class="space-y-2 text-purple-800">
-                        <li>• Отмечайте утверждения, которые точно описывают ваше состояние <strong>за последние 1–2 месяца</strong></li>
-                        <li>• Если симптом выражен слабо или бывает редко – не отмечайте</li>
-                        <li>• Тест займёт 3–5 минут</li>
-                        <li>• После теста вы получите подробный план на 2 недели</li>
-                    </ul>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Constitution Test Card -->
+                <div onclick="startConstitutionTest()" class="bg-white rounded-2xl shadow-lg p-8 cursor-pointer hover:shadow-2xl transition-all transform hover:scale-[1.02] border-2 border-transparent hover:border-purple-300">
+                    <div class="text-5xl mb-4">☀️🍂💧❄️</div>
+                    <h3 class="serif text-2xl font-bold mb-3 text-gray-900">Тип конституции</h3>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Определите свой базальный тип: Летний полдень, Осенняя листва, Весенняя вода или Зимний сад. 
+                        Узнайте, что вам нужно: охлаждение, согревание, осушение или комплексный подход.
+                    </p>
+                    <div class="flex items-center text-purple-600 font-semibold">
+                        <span>Начать тест</span>
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </div>
                 </div>
 
-                <button onclick="startTest()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg">
+                <!-- Stagnation Test Card -->
+                <div onclick="startStagnationTest()" class="bg-white rounded-2xl shadow-lg p-8 cursor-pointer hover:shadow-2xl transition-all transform hover:scale-[1.02] border-2 border-transparent hover:border-pink-300">
+                    <div class="text-5xl mb-4">🔄💨</div>
+                    <h3 class="serif text-2xl font-bold mb-3 text-gray-900">Зоны застоя энергии</h3>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                        Найдите локальные блоки: застой в Печени, Малом тазу или Грудной клетке. 
+                        Получите конкретные упражнения и точки для раскрытия каждой зоны.
+                    </p>
+                    <div class="flex items-center text-pink-600 font-semibold">
+                        <span>Начать тест</span>
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONSTITUTION TEST (Previous) -->
+        <div id="constitution-intro" class="hidden fade-in">
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                <button onclick="showMainMenu()" class="mb-6 text-gray-500 hover:text-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Назад
+                </button>
+                
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">☀️</div>
+                    <h2 class="serif text-3xl font-bold mb-4">Определение типа конституции</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Отметьте утверждения, которые точно описывают ваше состояние за последние 1–2 месяца. 
+                        Если симптом выражен слабо – не отмечайте.
+                    </p>
+                </div>
+                <button onclick="startConstitutionQuiz()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 rounded-xl text-lg transition-all">
                     Начать тестирование
                 </button>
             </div>
         </div>
 
-        <!-- Quiz Screen -->
-        <div id="quiz-screen" class="hidden fade-in">
+        <div id="constitution-quiz" class="hidden fade-in">
             <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10">
-                
                 <!-- Block A -->
-                <div id="block-a" class="question-block mb-8">
+                <div class="mb-8">
                     <h3 class="serif text-2xl font-bold mb-6 text-purple-900 border-b pb-2">Блок А. Ваше тело</h3>
                     <div class="space-y-4">
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn" data-id="a1">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">A1.</span>
-                                    <span class="ml-2">Мне постоянно холодно, особенно руки и ноги. Поясница мерзнет даже летом.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">A1.</span> Мне постоянно холодно, особенно руки и ноги. Поясница мерзнет даже летом.</div>
                             </div>
                         </label>
-                        
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer" data-id="a2">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">A2.</span>
-                                    <span class="ml-2">Меня бросает то в жар, то в холод. Бывают приливы, ночная потливость.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">A2.</span> Меня бросает то в жар, то в холод. Бывают приливы, ночная потливость.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="spring" data-id="a3">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">A3.</span>
-                                    <span class="ml-2">Я отечная, рыхлая. Мешки под глазами утром. Целлюлит, которого раньше не было.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">A3.</span> Я отечная, рыхлая. Мешки под глазами утром. Целлюлит, которого раньше не было.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer" data-id="a4">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">A4.</span>
-                                    <span class="ml-2">Сухость везде: кожа, глаза, волосы, интимная зона. Внутри как будто жар, но снаружи не горит.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">A4.</span> Сухость везде: кожа, глаза, волосы, интимная зона. Внутри как будто жар.</div>
                             </div>
                         </label>
                     </div>
                 </div>
 
                 <!-- Block B -->
-                <div id="block-b" class="question-block mb-8">
+                <div class="mb-8">
                     <h3 class="serif text-2xl font-bold mb-6 text-purple-900 border-b pb-2">Блок Б. Ваша энергия</h3>
                     <div class="space-y-4">
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn" data-id="b1">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">Б1.</span>
-                                    <span class="ml-2">Утром встаю уже уставшей. Весь день как выжатый лимон. Хочется лечь и не вставать.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">Б1.</span> Утром встаю уже уставшей. Весь день как выжатый лимон.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer" data-id="b2">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">Б2.</span>
-                                    <span class="ml-2">Вроде энергии много, но внутри напряжение. Вспыхиваю, потом падаю без сил.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">Б2.</span> Вроде энергии много, но внутри напряжение. Вспыхиваю, потом падаю без сил.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="spring" data-id="b3">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">Б3.</span>
-                                    <span class="ml-2">Тяжесть в теле, как будто налили воды. Всё делаю медленно, через силу.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">Б3.</span> Тяжесть в теле, как будто налили воды. Всё делаю медленно, через силу.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn" data-id="b4">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">Б4.</span>
-                                    <span class="ml-2">Энергии мало, но это не бессилие, а скорее «пустота». Тихо, спокойно, но без огня.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">Б4.</span> Энергии мало, но это не бессилие, а скорее «пустота». Тихо, без огня.</div>
                             </div>
                         </label>
                     </div>
                 </div>
 
                 <!-- Block C -->
-                <div id="block-c" class="question-block mb-8">
+                <div class="mb-8">
                     <h3 class="serif text-2xl font-bold mb-6 text-purple-900 border-b pb-2">Блок В. Ваш сон</h3>
                     <div class="space-y-4">
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn" data-id="c1">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">В1.</span>
-                                    <span class="ml-2">Засыпаю нормально, но просыпаюсь в 3–4 утра и не могу уснуть до утра.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">В1.</span> Засыпаю нормально, но просыпаюсь в 3–4 утра и не могу уснуть.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer" data-id="c2">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">В2.</span>
-                                    <span class="ml-2">Не могу уснуть. Мысли крутятся, диалоги в голове, прокручиваю день.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">В2.</span> Не могу уснуть. Мысли крутятся, диалоги в голове.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer" data-id="c3">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">В3.</span>
-                                    <span class="ml-2">Просыпаюсь в поту, особенно ближе к утру. Сердце колотится.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">В3.</span> Просыпаюсь в поту, особенно ближе к утру. Сердце колотится.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn" data-id="c4">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">В4.</span>
-                                    <span class="ml-2">Сплю 7–8 часов, но встаю разбитой, как будто не спала вообще.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">В4.</span> Сплю 7–8 часов, но встаю разбитой, как будто не спала.</div>
                             </div>
                         </label>
                     </div>
                 </div>
 
                 <!-- Block D -->
-                <div id="block-d" class="question-block mb-8">
+                <div class="mb-8">
                     <h3 class="serif text-2xl font-bold mb-6 text-purple-900 border-b pb-2">Блок Г. Ваши эмоции</h3>
                     <div class="space-y-4">
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer" data-id="d1">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">Г1.</span>
-                                    <span class="ml-2">Всё бесит. Срываюсь на близких, потом стыдно. Ору, даже когда не хочу.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">Г1.</span> Всё бесит. Срываюсь на близких, потом стыдно. Ору.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="spring" data-id="d2">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">Г2.</span>
-                                    <span class="ml-2">Всё внутри кипит, но молчу. Коплю обиды годами.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">Г2.</span> Всё внутри кипит, но молчу. Коплю обиды годами.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn" data-id="d3">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">Г3.</span>
-                                    <span class="ml-2">Апатия. Ничего не хочется, даже плакать.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">Г3.</span> Апатия. Ничего не хочется, даже плакать.</div>
                             </div>
                         </label>
-
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer" data-id="d4">
                             <div class="flex items-start">
-                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded focus:ring-purple-500">
-                                <div>
-                                    <span class="font-semibold text-purple-700">Г4.</span>
-                                    <span class="ml-2">Страхи, тревога. Особенно ночью. Кажется, что случится что-то плохое.</span>
-                                </div>
+                                <input type="checkbox" class="mt-1 mr-3 w-5 h-5 text-purple-600 rounded">
+                                <div><span class="font-semibold text-purple-700">Г4.</span> Страхи, тревога. Особенно ночью. Кажется, случится что-то плохое.</div>
                             </div>
                         </label>
                     </div>
                 </div>
 
-                <button onclick="calculateResults()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-xl text-lg transition-all transform hover:scale-[1.02] shadow-lg">
-                    Получить результаты и план действий
+                <button onclick="calculateConstitutionResults()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-xl text-lg transition-all">
+                    Получить результаты
                 </button>
             </div>
         </div>
 
-        <!-- Results Screen -->
-        <div id="results-screen" class="hidden fade-in space-y-6">
-            
-            <!-- Result Card -->
-            <div id="result-card" class="bg-white rounded-3xl shadow-xl p-8 text-center">
-                <div id="type-icon" class="text-6xl mb-4">☀️</div>
-                <h2 class="serif text-3xl font-bold mb-2" id="result-title">Ваш тип: Летний полдень</h2>
-                <p class="text-gray-600 mb-6" id="result-subtitle">Жар, пустота Инь, перегретая печень</p>
+        <!-- STAGNATION TEST (New) -->
+        <div id="stagnation-intro" class="hidden fade-in">
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+                <button onclick="showMainMenu()" class="mb-6 text-gray-500 hover:text-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Назад
+                </button>
                 
-                <div class="bg-gray-50 rounded-2xl p-6 mb-6">
-                    <h3 class="font-bold text-gray-800 mb-3">📊 Распределение баллов:</h3>
-                    <div class="space-y-3" id="scores-breakdown">
-                        <!-- Scores will be inserted here -->
-                    </div>
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🔄</div>
+                    <h2 class="serif text-3xl font-bold mb-4">Зоны застоя энергии</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Отметьте все утверждения, которые соответствуют вашему состоянию в последние 1–2 месяца. 
+                        Можно отметить несколько пунктов – это покажет все активные зоны застоя.
+                    </p>
                 </div>
-
-                <div id="mixed-notice" class="hidden bg-purple-100 border-l-4 border-purple-500 p-4 rounded-lg text-left mb-6">
-                    <p class="text-purple-800 font-medium">У вас смешанный тип. Рекомендации скорректированы с учётом обеих конституций.</p>
-                </div>
+                <button onclick="startStagnationQuiz()" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-4 rounded-xl text-lg transition-all">
+                    Начать диагностику
+                </button>
             </div>
+        </div>
 
-            <!-- 2-Week Plan -->
-            <div class="bg-white rounded-3xl shadow-xl p-8">
-                <h3 class="serif text-2xl font-bold mb-6 text-gray-900 flex items-center">
-                    <span class="mr-3">📅</span> Ваш план на 2 недели
-                </h3>
-
-                <!-- Daily Tasks -->
-                <div class="space-y-6" id="daily-plan">
-                    <!-- Plan content will be inserted here -->
-                </div>
-
-                <!-- Week 1 vs Week 2 -->
-                <div class="mt-8 grid md:grid-cols-2 gap-6">
-                    <div class="bg-blue-50 rounded-xl p-6 border-2 border-blue-100">
-                        <h4 class="font-bold text-blue-900 mb-3">Неделя 1: Адаптация</h4>
-                        <ul class="space-y-2 text-sm text-blue-800" id="week1-tasks">
-                            <!-- Week 1 tasks -->
-                        </ul>
-                    </div>
-                    <div class="bg-green-50 rounded-xl p-6 border-2 border-green-100">
-                        <h4 class="font-bold text-green-900 mb-3">Неделя 2: Углубление</h4>
-                        <ul class="space-y-2 text-sm text-green-800" id="week2-tasks">
-                            <!-- Week 2 tasks -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- General Recommendations -->
-            <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl shadow-xl p-8 border-2 border-purple-100">
-                <h3 class="serif text-2xl font-bold mb-6 text-purple-900">🌸 Общие рекомендации для всех типов</h3>
+        <div id="stagnation-quiz" class="hidden fade-in">
+            <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10">
+                <h3 class="serif text-2xl font-bold mb-6 text-pink-900">Отметьте ваши симптомы</h3>
                 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="space-y-4">
+                <div class="space-y-4">
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-pink-300" data-zone="liver" data-id="s1">
                         <div class="flex items-start">
-                            <span class="text-2xl mr-3">🦶</span>
+                            <input type="checkbox" class="mt-1 mr-4 w-5 h-5 text-pink-600 rounded focus:ring-pink-500">
                             <div>
-                                <h4 class="font-semibold">Точка Сань-Инь-Цзяо (SP6)</h4>
-                                <p class="text-sm text-gray-600">«Женская красота и молодость». Массируйте 30 раз в каждую сторону на каждой ноге ежедневно.</p>
+                                <h4 class="font-bold text-gray-900 mb-1">Частые головные боли, напряжение в плечах</h4>
+                                <p class="text-gray-600 text-sm">Раздражительность, вздутие живота, чувство кома в горле</p>
+                                <span class="inline-block mt-2 text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded">Зона: ПЕЧЕНЬ</span>
                             </div>
                         </div>
-                        
-                        <div class="flex items-start">
-                            <span class="text-2xl mr-3">😴</span>
-                            <div>
-                                <h4 class="font-semibold">Режим сна</h4>
-                                <p class="text-sm text-gray-600">Ложиться до 23:00. За час до сна без экранов. Проветривать комнату.</p>
-                            </div>
-                        </div>
-                    </div>
+                    </label>
 
-                    <div class="space-y-4">
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-pink-300" data-zone="liver" data-id="s2">
                         <div class="flex items-start">
-                            <span class="text-2xl mr-3">👅</span>
+                            <input type="checkbox" class="mt-1 mr-4 w-5 h-5 text-pink-600 rounded focus:ring-pink-500">
                             <div>
-                                <h4 class="font-semibold">Утренняя диагностика языка</h4>
-                                <p class="text-sm text-gray-600">Натощак проверяйте язык: норма — бледно-розовый с тонким белым налётом.</p>
+                                <h4 class="font-bold text-gray-900 mb-1">Болезненные или нерегулярные месячные</h4>
+                                <p class="text-gray-600 text-sm">Наличие сгустков, сильный ПМС с приступами гнева</p>
+                                <span class="inline-block mt-2 text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded">Зона: ПЕЧЕНЬ</span>
                             </div>
                         </div>
+                    </label>
 
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-pink-300" data-zone="pelvis" data-id="s3">
                         <div class="flex items-start">
-                            <span class="text-2xl mr-3">📔</span>
+                            <input type="checkbox" class="mt-1 mr-4 w-5 h-5 text-pink-600 rounded focus:ring-pink-500">
                             <div>
-                                <h4 class="font-semibold">Дневник самочувствия</h4>
-                                <p class="text-sm text-gray-600">Записывайте сон, энергию, отёки, аппетит. Это поможет скорректировать план.</p>
+                                <h4 class="font-bold text-gray-900 mb-1">Тянущие боли внизу живота</h4>
+                                <p class="text-gray-600 text-sm">Застойные выделения, миомы матки или эндометриоз</p>
+                                <span class="inline-block mt-2 text-xs font-semibold text-pink-700 bg-pink-100 px-2 py-1 rounded">Зона: МАЛЫЙ ТАЗ</span>
                             </div>
                         </div>
-                    </div>
+                    </label>
+
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-pink-300" data-zone="pelvis" data-id="s4">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-4 w-5 h-5 text-pink-600 rounded focus:ring-pink-500">
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Тяжесть в малом тазу</h4>
+                                <p class="text-gray-600 text-sm">Варикозное расширение вен в области промежности или на ногах</p>
+                                <span class="inline-block mt-2 text-xs font-semibold text-pink-700 bg-pink-100 px-2 py-1 rounded">Зона: МАЛЫЙ ТАЗ</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-pink-300" data-zone="chest" data-id="s5">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-4 w-5 h-5 text-pink-600 rounded focus:ring-pink-500">
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Нагрубание молочных желёз перед месячными</h4>
+                                <p class="text-gray-600 text-sm">Боль при нажатии на грудь, диагностированная мастопатия</p>
+                                <span class="inline-block mt-2 text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-1 rounded">Зона: ГРУДНАЯ КЛЕТКА</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-pink-300" data-zone="chest" data-id="s6">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-4 w-5 h-5 text-pink-600 rounded focus:ring-pink-500">
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Чувство сдавленности в грудной клетке</h4>
+                                <p class="text-gray-600 text-sm">Неглубокое дыхание, «эмоциональные комки» в груди (непрожитая печаль)</p>
+                                <span class="inline-block mt-2 text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-1 rounded">Зона: ГРУДНАЯ КЛЕТКА</span>
+                            </div>
+                        </div>
+                    </label>
                 </div>
-            </div>
 
-            <!-- Disclaimer -->
-            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-xl">
-                <p class="text-yellow-800 text-sm">
-                    <strong>Важно:</strong> Все рекомендации имеют ознакомительный характер и основаны на принципах традиционной восточной медицины. 
-                    При наличии острых или хронических заболеваний перед применением посоветуйтесь с врачом.
-                </p>
+                <button onclick="calculateStagnationResults()" class="w-full mt-8 bg-pink-600 hover:bg-pink-700 text-white font-bold py-4 rounded-xl text-lg transition-all">
+                    Получить план раскрытия застоя
+                </button>
             </div>
+        </div>
 
-            <button onclick="resetTest()" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 rounded-xl transition-all">
-                Пройти тест заново
-            </button>
+        <!-- Constitution Results -->
+        <div id="constitution-results" class="hidden fade-in space-y-6">
+            <!-- Result content will be inserted here via JS -->
+        </div>
+
+        <!-- Stagnation Results -->
+        <div id="stagnation-results" class="hidden fade-in space-y-6">
+            <!-- Result content will be inserted here via JS -->
         </div>
 
     </main>
 
     <script>
-        let answers = {};
-        const totalQuestions = 16;
+        // Global state
+        let currentTest = '';
+        let constitutionAnswers = {};
+        let stagnationAnswers = {};
 
-        function startTest() {
-            document.getElementById('intro-screen').classList.add('hidden');
-            document.getElementById('quiz-screen').classList.remove('hidden');
-            document.getElementById('progress-container').classList.remove('hidden');
-            updateProgress();
+        // Navigation functions
+        function showMainMenu() {
+            hideAllScreens();
+            document.getElementById('main-menu').classList.remove('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
         }
 
-        // Handle checkbox changes with visual feedback
-        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                const card = this.closest('.option-card');
-                if (this.checked) {
-                    card.classList.add('selected');
-                    answers[this.closest('.option-card').dataset.id] = this.closest('.option-card').dataset.type;
-                } else {
-                    card.classList.remove('selected');
-                    delete answers[this.closest('.option-card').dataset.id];
-                }
-                updateProgress();
+        function hideAllScreens() {
+            ['main-menu', 'constitution-intro', 'constitution-quiz', 'constitution-results', 
+             'stagnation-intro', 'stagnation-quiz', 'stagnation-results'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
             });
+        }
+
+        // Constitution Test Functions
+        function startConstitutionTest() {
+            hideAllScreens();
+            document.getElementById('constitution-intro').classList.remove('hidden');
+        }
+
+        function startConstitutionQuiz() {
+            hideAllScreens();
+            document.getElementById('constitution-quiz').classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            currentTest = 'constitution';
+            constitutionAnswers = {};
+            updateConstitutionProgress();
+        }
+
+        function updateConstitutionProgress() {
+            const answered = Object.keys(constitutionAnswers).length;
+            const percent = (answered / 16) * 100;
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('progress-text').textContent = answered + '/16';
+        }
+
+        // Stagnation Test Functions
+        function startStagnationTest() {
+            hideAllScreens();
+            document.getElementById('stagnation-intro').classList.remove('hidden');
+        }
+
+        function startStagnationQuiz() {
+            hideAllScreens();
+            document.getElementById('stagnation-quiz').classList.remove('hidden');
+            currentTest = 'stagnation';
+            stagnationAnswers = {};
+        }
+
+        // Event listeners for checkboxes
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'checkbox') {
+                const card = e.target.closest('.option-card');
+                if (currentTest === 'constitution') {
+                    if (e.target.checked) {
+                        card.classList.add('selected');
+                        constitutionAnswers[card.dataset.id] = card.dataset.type;
+                    } else {
+                        card.classList.remove('selected');
+                        delete constitutionAnswers[card.dataset.id];
+                    }
+                    updateConstitutionProgress();
+                } else if (currentTest === 'stagnation') {
+                    if (e.target.checked) {
+                        card.classList.add('selected');
+                        stagnationAnswers[card.dataset.id] = card.dataset.zone;
+                    } else {
+                        card.classList.remove('selected');
+                        delete stagnationAnswers[card.dataset.id];
+                    }
+                }
+            }
         });
 
-        function updateProgress() {
-            const answered = Object.keys(answers).length;
-            const percent = (answered / totalQuestions) * 100;
-            document.getElementById('progress-bar').style.width = percent + '%';
-            document.getElementById('progress-text').textContent = answered + '/' + totalQuestions;
-        }
-
-        function calculateResults() {
-            const scores = {
-                summer: 0,
-                autumn: 0,
-                spring: 0,
-                winter: 0
-            };
-
-            // Count direct matches
-            Object.values(answers).forEach(type => {
-                if (scores[type] !== undefined) {
-                    scores[type]++;
-                }
+        // Calculate Constitution Results (previous logic)
+        function calculateConstitutionResults() {
+            const scores = { summer: 0, autumn: 0, spring: 0, winter: 0 };
+            
+            Object.values(constitutionAnswers).forEach(type => {
+                if (scores[type] !== undefined) scores[type]++;
             });
 
-            // Check for Winter Garden combinations (cold + dampness)
-            const hasA1 = answers['a1'] !== undefined; // cold
-            const hasA3 = answers['a3'] !== undefined; // dampness/swelling
-            const hasB1 = answers['b1'] !== undefined; // fatigue
-            const hasB3 = answers['b3'] !== undefined; // heaviness
-            const hasD2 = answers['d2'] !== undefined; // suppressed emotions
-            const hasD3 = answers['d3'] !== undefined; // apathy
+            // Winter combinations
+            const hasA1 = constitutionAnswers['a1'] !== undefined;
+            const hasA3 = constitutionAnswers['a3'] !== undefined;
+            const hasB1 = constitutionAnswers['b1'] !== undefined;
+            const hasB3 = constitutionAnswers['b3'] !== undefined;
+            const hasD2 = constitutionAnswers['d2'] !== undefined;
+            const hasD3 = constitutionAnswers['d3'] !== undefined;
 
-            // Winter combinations: A1+A3, A1+B3, B1+B3, D2+D3
             if ((hasA1 && hasA3) || (hasA1 && hasB3) || (hasB1 && hasB3) || (hasD2 && hasD3)) {
-                scores.winter += 2; // Bonus for winter combination
+                scores.winter += 2;
             }
 
-            // Determine primary type
             let maxScore = Math.max(...Object.values(scores));
             let primaryTypes = Object.keys(scores).filter(key => scores[key] === maxScore);
-            
             let resultType;
             let isMixed = false;
 
             if (primaryTypes.length === 1) {
                 resultType = primaryTypes[0];
             } else {
-                // If tie or close scores (difference <= 1), it's mixed
                 isMixed = true;
-                // Prioritize: if summer is involved, it's usually dominant. Otherwise take first two.
                 if (primaryTypes.includes('summer')) resultType = 'summer';
                 else if (primaryTypes.includes('winter')) resultType = 'winter';
-                else resultType = primaryTypes[0] + '-' + primaryTypes[1];
+                else resultType = primaryTypes[0];
             }
 
-            // Also check if second place is close (<=1 point difference)
             const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
             if (sortedScores.length > 1 && (sortedScores[0][1] - sortedScores[1][1] <= 1) && sortedScores[1][1] > 0) {
                 isMixed = true;
             }
 
-            showResults(resultType, scores, isMixed, sortedScores);
+            showConstitutionResults(resultType, scores, isMixed, sortedScores);
         }
 
-        function showResults(type, scores, isMixed, sortedScores) {
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('results-screen').classList.remove('hidden');
+        function showConstitutionResults(type, scores, isMixed, sortedScores) {
+            hideAllScreens();
             document.getElementById('progress-container').classList.add('hidden');
+            const container = document.getElementById('constitution-results');
+            container.classList.remove('hidden');
 
-            // Update scores breakdown
-            const scoreNames = {
-                summer: 'Летний полдень (жар)',
-                autumn: 'Осенняя листва (холод)',
-                spring: 'Весенняя вода (сырость)',
-                winter: 'Зимний сад (холод+сырость)'
-            };
-            
-            let scoresHTML = '';
-            Object.entries(scores).forEach(([key, value]) => {
-                const percent = (value / 4) * 100; // max 4 points per type
-                scoresHTML += `
-                    <div class="flex items-center">
-                        <span class="w-32 text-sm">${scoreNames[key]}:</span>
-                        <div class="flex-1 mx-2">
-                            <div class="bg-gray-200 rounded-full h-2">
-                                <div class="bg-purple-600 h-2 rounded-full" style="width: ${percent}%"></div>
-                            </div>
-                        </div>
-                        <span class="w-8 text-right font-semibold">${value}</span>
-                    </div>
-                `;
-            });
-            document.getElementById('scores-breakdown').innerHTML = scoresHTML;
-
-            // Configure result display
             const typeConfig = {
-                'summer': {
-                    icon: '☀️',
-                    title: 'Летний полдень',
-                    subtitle: 'Жар, пустота Инь, перегретая печень',
-                    class: 'type-summer',
-                    color: 'text-yellow-800',
-                    bg: 'bg-yellow-50'
-                },
-                'autumn': {
-                    icon: '🍂',
-                    title: 'Осенняя листва',
-                    subtitle: 'Холод, пустота Ян, недостаток энергии',
-                    class: 'type-autumn',
-                    color: 'text-orange-800',
-                    bg: 'bg-orange-50'
-                },
-                'spring': {
-                    icon: '💧',
-                    title: 'Весенняя вода',
-                    subtitle: 'Сырость, застой, тяжесть',
-                    class: 'type-spring',
-                    color: 'text-blue-800',
-                    bg: 'bg-blue-50'
-                },
-                'winter': {
-                    icon: '❄️',
-                    title: 'Зимний сад',
-                    subtitle: 'Холод + сырость, выраженный застой',
-                    class: 'type-winter',
-                    color: 'text-gray-800',
-                    bg: 'bg-gray-50'
-                }
+                summer: { icon: '☀️', title: 'Летний полдень', subtitle: 'Жар, пустота Инь, перегретая печень', class: 'type-summer', color: 'text-yellow-800' },
+                autumn: { icon: '🍂', title: 'Осенняя листва', subtitle: 'Холод, пустота Ян, недостаток энергии', class: 'type-autumn', color: 'text-orange-800' },
+                spring: { icon: '💧', title: 'Весенняя вода', subtitle: 'Сырость, застой, тяжесть', class: 'type-spring', color: 'text-blue-800' },
+                winter: { icon: '❄️', title: 'Зимний сад', subtitle: 'Холод + сырость, выраженный застой', class: 'type-winter', color: 'text-gray-800' }
             };
 
-            const config = typeConfig[type] || typeConfig['summer'];
+            const config = typeConfig[type];
             
-            document.getElementById('type-icon').textContent = config.icon;
-            document.getElementById('result-title').textContent = `Ваш тип: ${config.title}`;
-            document.getElementById('result-title').className = `serif text-3xl font-bold mb-2 ${config.color}`;
-            document.getElementById('result-subtitle').textContent = config.subtitle;
-            document.getElementById('result-card').className = `${config.class} rounded-3xl shadow-xl p-8 text-center`;
+            // Build results HTML
+            let html = `
+                <div class="${config.class} rounded-3xl shadow-xl p-8 text-center">
+                    <div class="text-6xl mb-4">${config.icon}</div>
+                    <h2 class="serif text-3xl font-bold mb-2 ${config.color}">Ваш тип: ${config.title}</h2>
+                    <p class="text-gray-700 mb-6">${config.subtitle}</p>
+                    
+                    <div class="bg-white/50 rounded-2xl p-6 mb-6 text-left">
+                        <h3 class="font-bold text-gray-800 mb-3">Распределение баллов:</h3>
+                        <div class="space-y-2 text-sm">
+                            ${Object.entries(scores).map(([k,v]) => `
+                                <div class="flex justify-between">
+                                    <span>${typeConfig[k].title}</span>
+                                    <span class="font-bold">${v}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ${isMixed ? '<div class="bg-white/70 p-4 rounded-lg mb-4 text-sm">У вас смешанный тип. Рекомендации скорректированы.</div>' : ''}
+                </div>
 
-            if (isMixed) {
-                document.getElementById('mixed-notice').classList.remove('hidden');
-            }
+                <div class="bg-white rounded-3xl shadow-xl p-8">
+                    <h3 class="serif text-2xl font-bold mb-6">📅 Ваш план на 2 недели</h3>
+                    ${getConstitutionPlan(type)}
+                </div>
 
-            // Generate plan
-            generatePlan(type, isMixed);
+                <button onclick="showMainMenu()" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 rounded-xl transition-all">
+                    Вернуться в меню
+                </button>
+            `;
+            
+            container.innerHTML = html;
         }
 
-        function generatePlan(type, isMixed) {
+        function getConstitutionPlan(type) {
             const plans = {
                 summer: {
                     goal: 'Гасить внутренний огонь, увлажнять и успокаивать',
-                    daily: [
-                        {
-                            title: 'Дыхание «прохладной трубочкой»',
-                            desc: 'Сверните язык трубочкой. Вдохните через неё, представляя прохладу. Выдох через нос. 5–7 раз каждый вечер и при приливе жара.',
-                            icon: '🌬️'
-                        },
-                        {
-                            title: 'Точка Сань-Инь-Цзяо (SP6)',
-                            desc: 'На внутренней стороне голени, 4 пальца выше лодыжки. Массаж 30 раз в каждую сторону на каждой ноге.',
-                            icon: '🦶'
-                        },
-                        {
-                            title: 'Питание: исключить',
-                            desc: 'Кофе, острые специи, алкоголь, жирное мясо, сладкое, выпечку.',
-                            icon: '🚫'
-                        },
-                        {
-                            title: 'Питание: добавить',
-                            desc: 'Индейка, сельдерей, огурец, мята, зелёный салат, кабачок, тофу. Вода комнатной температуры.',
-                            icon: '🥗'
-                        },
-                        {
-                            title: 'Режим сна',
-                            desc: 'Ложиться до 23:00. При ночном пробуждении — дыхание трубочкой. Можно положить прохладное полотенце на лоб/запястья.',
-                            icon: '😴'
-                        }
-                    ],
-                    week1: [
-                        'Начните с дыхательной практики каждый вечер',
-                        'Исключите кофе и острые специи полностью',
-                        'Массаж точки SP6 ежедневно',
-                        'Ложиться до 23:00 (даже если не спится сразу)'
-                    ],
-                    week2: [
-                        'Добавьте утреннюю растяжку или йину-йогу',
-                        'Увеличьте потребление зелёных овощей',
-                        'Практикуйте медитацию перед сном',
-                        'Начните вести дневник сна'
+                    tasks: [
+                        {icon: '🌬️', title: 'Дыхание «прохладной трубочкой»', desc: 'Сверните язык трубочкой, вдох через неё с прохладой, выдох носом. 5-7 раз вечером.'},
+                        {icon: '🦶', title: 'Точка Сань-Инь-Цзяо (SP6)', desc: '4 пальца выше лодыжки внутри. 30 раз в каждую сторону.'},
+                        {icon: '🚫', title: 'Исключить', desc: 'Кофе, острые специи, алкоголь, жирное мясо, сладкое.'},
+                        {icon: '🥗', title: 'Добавить', desc: 'Индейка, сельдерей, огурец, мята, зелёный салат, тофу.'},
+                        {icon: '😴', title: 'Сон до 23:00', desc: 'При просыпании ночью - дыхание трубочкой. Прохладное полотенце на лоб.'}
                     ]
                 },
                 autumn: {
                     goal: 'Согреть тело, наполнить энергией, дать тепло в центр',
-                    daily: [
-                        {
-                            title: 'Вибрационный массаж Гуань-Юань (CV4)',
-                            desc: '4 пальца ниже пупка. Растереть ладони до тепла, вибрировать 3–5 минут вечером, представляя тепло внутри.',
-                            icon: '🔥'
-                        },
-                        {
-                            title: 'Точка Сань-Инь-Цзяо',
-                            desc: 'Обязательно ежедневно: 30+30 раз на каждой ноге.',
-                            icon: '🦶'
-                        },
-                        {
-                            title: 'Утренний согревающий напиток',
-                            desc: 'За 20–30 мин до завтрака: тёплая вода + лимон + натёртый имбирь (с ноготь). Разжигает пищеварительный огонь.',
-                            icon: '🍵'
-                        },
-                        {
-                            title: 'Питание',
-                            desc: 'Тёплые варёные/запечённые блюда. Тыква, морковь, гречка, рис, имбирь, корица, курица. Исключить сырые овощи и холодное.',
-                            icon: '🍲'
-                        },
-                        {
-                            title: 'Сон и тепло',
-                            desc: 'Ложиться до 23:00. Перед сном тёплая ванна для ног (10 мин). Шерстяные носки на ночь.',
-                            icon: '🧦'
-                        }
-                    ],
-                    week1: [
-                        'Начните с утреннего имбирного напитка',
-                        'Вечерний массаж точки CV4',
-                        'Носите шерстяные носки на ночь',
-                        'Исключите все холодные напитки и сырые овощи'
-                    ],
-                    week2: [
-                        'Добавьте утреннюю гимнастику или ходьбу 20 мин',
-                        'Увеличьте порции тёплой пищи',
-                        'Практикуйте вибрационный массаж дважды в день',
-                        'Следите за температурой поясницы (не мёрзнуть)'
+                    tasks: [
+                        {icon: '🔥', title: 'Массаж Гуань-Юань (CV4)', desc: '4 пальца ниже пупка. Вибрация 3-5 минут вечером.'},
+                        {icon: '🍵', title: 'Утренний напиток', desc: 'Тёплая вода + лимон + имбирь за 20 мин до завтрака.'},
+                        {icon: '🧦', title: 'Тепло', desc: 'Шерстяные носки на ночь. Тёплая ванна для ног перед сном.'},
+                        {icon: '🍲', title: 'Питание', desc: 'Тыква, морковь, гречка, рис, имбирь, корица. Исключить сырое и холодное.'},
+                        {icon: '🚶‍♀️', title: 'Движение', desc: 'Утренняя гимнастика или ходьба 20 мин для разгона Ци.'}
                     ]
                 },
                 spring: {
                     goal: 'Сушить сырость, двигать застой, разгружать селезёнку',
-                    daily: [
-                        {
-                            title: 'Упражнение «Выдыхаем обиды»',
-                            desc: 'Пальцы на правом подреберье. Вдох → наклон вперёд со звуком «ХУ» на выдохе (3 раза). Затем руки в стороны, ладони на подреберье, улыбка, внимание на селезёнку.',
-                            icon: '💨'
-                        },
-                        {
-                            title: 'Утренний напиток',
-                            desc: 'Тёплая вода + лимон + имбирь. Лимон «сушит» сырость, имбирь двигает жидкости.',
-                            icon: '🍋'
-                        },
-                        {
-                            title: 'Точка Сань-Инь-Цзяо',
-                            desc: 'Массаж 30+30 раз ежедневно — помогает убрать отёчность.',
-                            icon: '🦶'
-                        },
-                        {
-                            title: 'Питание',
-                            desc: 'Исключить: молочные продукты, сладкое, мучное, жирное, бананы, арахис. Добавить: рис, кукуруза, тыква, редька, сельдерей, зелёный чай с мятой.',
-                            icon: '🌾'
-                        },
-                        {
-                            title: 'Движение',
-                            desc: 'Ходьба 30–40 мин ежедневно. Лёгкие прыжки или танцы для движения застоя.',
-                            icon: '🚶‍♀️'
-                        }
-                    ],
-                    week1: [
-                        'Начните утро со звукового выдоха «ХУ»',
-                        'Полностью исключите молочные продукты',
-                        'Ходьба минимум 30 мин в день',
-                        'Массаж SP6 для уменьшения отёчности'
-                    ],
-                    week2: [
-                        'Добавьте прыжки или танцы 3 раза в неделю',
-                        'Увеличьте потребление сельдерея и редьки',
-                        'Практикуйте упражнение на застой дважды в день',
-                        'Следите за мешками под глазами (диагностика)'
+                    tasks: [
+                        {icon: '💨', title: '«Выдыхаем обиды»', desc: 'Пальцы на правом подреберье, наклон со звуком «ХУ», 3 раза.'},
+                        {icon: '🍋', title: 'Утренний напиток', desc: 'Тёплая вода с лимоном и имбирём для сушки сырости.'},
+                        {icon: '🚫', title: 'Исключить', desc: 'Молочные продукты, сладкое, мучное, бананы, арахис.'},
+                        {icon: '🌾', title: 'Добавить', desc: 'Рис, кукуруза, тыква, редька, сельдерей, зелёный чай с мятой.'},
+                        {icon: '🚶‍♀️', title: 'Движение', desc: 'Ходьба 30-40 мин, лёгкие прыжки или танцы.'}
                     ]
                 },
                 winter: {
                     goal: 'Одновременно согревать и осушать, убирать холодную сырость',
-                    daily: [
-                        {
-                            title: 'Комбинация массажа',
-                            desc: 'Вибрационный массаж Гуань-Юань (CV4) вечером + упражнение «Выдыхаем обиды» утром.',
-                            icon: '🔥'
-                        },
-                        {
-                            title: 'Точка Сань-Инь-Цзяо',
-                            desc: 'Обязательно ежедневно: 30+30 раз на каждой ноге.',
-                            icon: '🦶'
-                        },
-                        {
-                            title: 'Утренний напиток',
-                            desc: 'Тёплая вода + лимон + имбирь (как для Осени и Весны).',
-                            icon: '🍵'
-                        },
-                        {
-                            title: 'Питание',
-                            desc: 'Полностью исключить холодное и сырое, сладкое, молоко. Тёплые каши (гречка, рис), тушёные овощи, супы-пюре, имбирь, корица, чёрный перец.',
-                            icon: '🥣'
-                        },
-                        {
-                            title: 'Дополнительно',
-                            desc: 'Шерстяные носки каждую ночь (точка Юн-Цюань). При отёках — тёплая ванна с морской солью через день (15 мин).',
-                            icon: '🧦'
-                        }
-                    ],
-                    week1: [
-                        'Сфокусируйтесь на согревании: носки, тёплая еда, ванны для ног',
-                        'Начните утро с имбирного напитка',
-                        'Массаж CV4 каждый вечер',
-                        'Исключите всё холодное и сырое резко'
-                    ],
-                    week2: [
-                        'Добавьте упражнение «Выдыхаем обиды» для застоя',
-                        'Ванны с морской солью при отёчности',
-                        'Увеличьте специи (корица, имбирь) в пище',
-                        'Следите за сочетанием холода и сырости в теле'
+                    tasks: [
+                        {icon: '🔥', title: 'Комбинация техник', desc: 'Массаж CV4 вечером + «Выдыхаем обиды» утром.'},
+                        {icon: '🍵', title: 'Утренний напиток', desc: 'Тёплая вода с лимоном и имбирём.'},
+                        {icon: '🥣', title: 'Питание', desc: 'Тёплые каши, тушёные овощи, супы-пюре. Никакого холодного и сырого.'},
+                        {icon: '🧦', title: 'Тепло', desc: 'Шерстяные носки каждую ночь. Ванна с морской солью при отёках.'},
+                        {icon: '🦶', title: 'SP6', desc: 'Обязательный массаж 30+30 раз ежедневно.'}
                     ]
                 }
             };
 
-            const plan = plans[type] || plans['summer'];
+            const plan = plans[type];
+            return `
+                <div class="bg-purple-50 rounded-xl p-4 mb-6 border-l-4 border-purple-500">
+                    <h4 class="font-bold text-purple-900">🎯 Задача: ${plan.goal}</h4>
+                </div>
+                <div class="space-y-4">
+                    ${plan.tasks.map(t => `
+                        <div class="border border-gray-200 rounded-xl p-4 flex items-start">
+                            <span class="text-2xl mr-4">${t.icon}</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">${t.title}</h4>
+                                <p class="text-sm text-gray-600">${t.desc}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="mt-6 grid md:grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-blue-900 mb-2">Неделя 1</h4>
+                        <ul class="text-sm text-blue-800 space-y-1">
+                            <li>• Адаптация, базовые практики</li>
+                            <li>• Исключение запрещённых продуктов</li>
+                            <li>• Настройка режима сна</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-green-900 mb-2">Неделя 2</h4>
+                        <ul class="text-sm text-green-800 space-y-1">
+                            <li>• Углубление практик</li>
+                            <li>• Добавление движения</li>
+                            <li>• Корректировка по самочувствию</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Calculate Stagnation Results
+        function calculateStagnationResults() {
+            const activeZones = {
+                liver: false,
+                pelvis: false,
+                chest: false
+            };
+
+            // Check which zones are active
+            Object.entries(stagnationAnswers).forEach(([id, zone]) => {
+                activeZones[zone] = true;
+            });
+
+            const zonesList = Object.keys(activeZones).filter(z => activeZones[z]);
             
-            // Insert goal
-            const planContainer = document.getElementById('daily-plan');
-            planContainer.innerHTML = `
-                <div class="bg-purple-100 rounded-xl p-4 mb-6 border-l-4 border-purple-500">
-                    <h4 class="font-bold text-purple-900">🎯 Ваша главная задача:</h4>
-                    <p class="text-purple-800">${plan.goal}</p>
+            if (zonesList.length === 0) {
+                alert('Пожалуйста, отметьте хотя бы один симптом');
+                return;
+            }
+
+            showStagnationResults(activeZones, zonesList);
+        }
+
+        function showStagnationResults(activeZones, zonesList) {
+            hideAllScreens();
+            const container = document.getElementById('stagnation-results');
+            container.classList.remove('hidden');
+
+            let html = `
+                <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-3xl shadow-xl p-8 text-center border-2 border-pink-100">
+                    <div class="text-6xl mb-4">🔄💨</div>
+                    <h2 class="serif text-3xl font-bold mb-4 text-pink-900">Выявленные зоны застоя</h2>
+                    <div class="flex flex-wrap justify-center gap-3 mb-6">
+                        ${activeZones.liver ? '<span class="bg-green-100 text-green-800 px-4 py-2 rounded-full font-semibold">🫁 ПЕЧЕНЬ</span>' : ''}
+                        ${activeZones.pelvis ? '<span class="bg-pink-100 text-pink-800 px-4 py-2 rounded-full font-semibold">🌸 МАЛЫЙ ТАЗ</span>' : ''}
+                        ${activeZones.chest ? '<span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold">💙 ГРУДНАЯ КЛЕТКА</span>' : ''}
+                    </div>
+                    <p class="text-gray-600 mb-4">Выполняйте рекомендации для каждой активной зоны ежедневно в течение 2–4 недель.</p>
                 </div>
             `;
 
-            // Insert daily tasks
-            plan.daily.forEach((task, index) => {
-                planContainer.innerHTML += `
-                    <div class="border-2 border-gray-100 rounded-xl p-5 hover:border-purple-200 transition-colors">
+            // Add sections for active zones
+            if (activeZones.liver) {
+                html += getLiverSection();
+            }
+            if (activeZones.pelvis) {
+                html += getPelvisSection();
+            }
+            if (activeZones.chest) {
+                html += getChestSection();
+            }
+
+            // Add note for multiple zones
+            if (zonesList.length > 1) {
+                html += `
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-xl">
+                        <h4 class="font-bold text-yellow-900 mb-2">⚠️ При комбинации зон</h4>
+                        <p class="text-yellow-800 text-sm">
+                            Если у вас застой в нескольких зонах – выполняйте упражнения для каждой зоны ежедневно. 
+                            При дефиците времени чередуйте их по дням, но старайтесь охватить все зоны в течение недели. 
+                            Начинайте с малого – выберите одно упражнение на зону и делайте его не менее 2 недель.
+                        </p>
+                    </div>
+                `;
+            }
+
+            // General recommendations
+            html += `
+                <div class="bg-white rounded-3xl shadow-xl p-8">
+                    <h3 class="serif text-2xl font-bold mb-6 text-gray-900">🌸 Общие принципы работы с застоем</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div class="flex items-start">
-                            <span class="text-3xl mr-4">${task.icon}</span>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-gray-900 mb-1">${index + 1}. ${task.title}</h4>
-                                <p class="text-gray-600 text-sm leading-relaxed">${task.desc}</p>
+                            <span class="text-2xl mr-3">🦶</span>
+                            <div>
+                                <h4 class="font-semibold">Точка Сань-Инь-Цзяо (SP6)</h4>
+                                <p class="text-sm text-gray-600">Универсальная точка для всех зон. 4 пальца выше внутренней лодыжки. Массаж 30+30 раз ежедневно.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-3">😴</span>
+                            <div>
+                                <h4 class="font-semibold">Режим сна</h4>
+                                <p class="text-sm text-gray-600">Ложиться до 23:00. Именно ночью происходит очищение и движение энергии.</p>
                             </div>
                         </div>
                     </div>
-                `;
-            });
+                </div>
 
-            // Week tasks
-            document.getElementById('week1-tasks').innerHTML = plan.week1.map(t => `<li class="flex items-start"><span class="mr-2">✓</span>${t}</li>`).join('');
-            document.getElementById('week2-tasks').innerHTML = plan.week2.map(t => `<li class="flex items-start"><span class="mr-2">→</span>${t}</li>`).join('');
+                <div class="bg-red-50 border-l-4 border-red-400 p-6 rounded-r-xl">
+                    <h4 class="font-bold text-red-900 mb-2">⚠️ Важные противопоказания</h4>
+                    <ul class="text-red-800 text-sm list-disc list-inside space-y-1">
+                        <li>Все точки акупрессуры не используются при беременности (особенно SP6, LV3)</li>
+                        <li>При острых болях, подозрении на онкологию или обострении хронических заболеваний проконсультируйтесь с врачом</li>
+                        <li>Положительный эффект обычно заметен через 2–4 недели регулярной практики</li>
+                    </ul>
+                </div>
+
+                <button onclick="showMainMenu()" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 rounded-xl transition-all">
+                    Вернуться в меню
+                </button>
+            `;
+
+            container.innerHTML = html;
         }
 
-        function resetTest() {
-            answers = {};
-            document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                cb.checked = false;
-                cb.closest('.option-card').classList.remove('selected');
-            });
-            document.getElementById('results-screen').classList.add('hidden');
-            document.getElementById('intro-screen').classList.remove('hidden');
-            document.getElementById('mixed-notice').classList.add('hidden');
-            updateProgress();
+        function getLiverSection() {
+            return `
+                <div class="zone-liver rounded-3xl shadow-xl p-8 border-2 border-green-200">
+                    <div class="flex items-center mb-6">
+                        <span class="text-4xl mr-4">🫁</span>
+                        <div>
+                            <h3 class="serif text-2xl font-bold text-green-900">Застой в зоне ПЕЧЕНИ</h3>
+                            <p class="text-green-700 text-sm">Головные боли, напряжение, раздражительность, ПМС с гневом</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-green-900 mb-2">🪓 Упражнение «Рубим дрова»</h4>
+                            <p class="text-sm text-gray-700 mb-2">Стоя, сцепите руки в замок. Поднимите над головой, с силой опустите вниз как для рубки дров, со звуком <strong>«ХА!»</strong> на выдохе.</p>
+                            <p class="text-xs font-semibold text-green-800">✓ 10 раз, утром или днём (не вечером)</p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-green-900 mb-2">🦶 Точка ТАЙ-ЧУН (LV3)</h4>
+                            <p class="text-sm text-gray-700">На стопе между 1-й и 2-й плюсневыми костями. Массируйте круговыми движениями по <strong>2 минуты</strong> на каждой стопе перед сном.</p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-green-900 mb-2">✋ Точка НЭЙ-ГУАНЬ (PC6)</h4>
+                            <p class="text-sm text-gray-700">3 пальца выше запястья со стороны ладони. При гневе или тревоге – нажмите и сделайте 5 глубоких вдохов.</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-green-50 rounded-lg p-3">
+                                <h5 class="font-semibold text-green-900 text-sm mb-1">✅ Добавить</h5>
+                                <p class="text-xs text-green-800">Зелень (петрушка, кинза), свёкла, лимоны, зелёный чай</p>
+                            </div>
+                            <div class="bg-red-50 rounded-lg p-3">
+                                <h5 class="font-semibold text-red-900 text-sm mb-1">❌ Исключить</h5>
+                                <p class="text-xs text-red-800">Жареное, жирное, алкоголь, избыток кофе</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
-        // Smooth scroll to top when showing results
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function getPelvisSection() {
+            return `
+                <div class="zone-pelvis rounded-3xl shadow-xl p-8 border-2 border-pink-200">
+                    <div class="flex items-center mb-6">
+                        <span class="text-4xl mr-4">🌸</span>
+                        <div>
+                            <h3 class="serif text-2xl font-bold text-pink-900">Застой в зоне МАЛОГО ТАЗА</h3>
+                            <p class="text-pink-700 text-sm">Тянущие боли внизу живота, миомы, эндометриоз, варикоз</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-pink-900 mb-2">💨 Упражнение «Выдыхаем обиды»</h4>
+                            <p class="text-sm text-gray-700 mb-2">Поставьте пальцы на <strong>левое подреберье</strong> (селезёнка). Вдох → наклон вперёд со звуком <strong>«ХУ»</strong> на выдохе (3 раза).</p>
+                            <p class="text-sm text-gray-700">Затем разведите руки, положите на левое подреберье, улыбнитесь, направьте внимание туда на 1–2 минуты.</p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-pink-900 mb-2">🦶 Точка САНЬ-ИНЬ-ЦЗЯО (SP6)</h4>
+                            <p class="text-sm text-gray-700">4 пальца выше внутренней лодыжки. <strong>30 раз в одну сторону, 30 в другую</strong> на каждой ноге. Можно использовать аку-пластырь.</p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-pink-900 mb-2">🔥 Тепло на низ живота</h4>
+                            <p class="text-sm text-gray-700">Каждый вечер грелка или мешочек с солью на низ живота <strong>15–20 минут</strong>.</p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-pink-900 mb-2">🚶‍♀️ Движение</h4>
+                            <p class="text-sm text-gray-700">Ежедневная ходьба не менее 30 минут, плавание. Избегайте длительного сидения!</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-green-50 rounded-lg p-3">
+                                <h5 class="font-semibold text-green-900 text-sm mb-1">✅ Добавить</h5>
+                                <p class="text-xs text-green-800">Тёплые супы, имбирь, куркума, чёрный перец</p>
+                            </div>
+                            <div class="bg-red-50 rounded-lg p-3">
+                                <h5 class="font-semibold text-red-900 text-sm mb-1">❌ Исключить</h5>
+                                <p class="text-xs text-red-800">Холодные напитки, мороженое, сырые овощи</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getChestSection() {
+            return `
+                <div class="zone-chest rounded-3xl shadow-xl p-8 border-2 border-blue-200">
+                    <div class="flex items-center mb-6">
+                        <span class="text-4xl mr-4">💙</span>
+                        <div>
+                            <h3 class="serif text-2xl font-bold text-blue-900">Застой в зоне ГРУДНОЙ КЛЕТКИ</h3>
+                            <p class="text-blue-700 text-sm">Мастопатия, сдавленность в груди, эмоциональные «комки», неглубокое дыхание</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-blue-900 mb-2">🗝️ Упражнение «Раскрытие грудной клетки»</h4>
+                            <ol class="text-sm text-gray-700 list-decimal list-inside space-y-1">
+                                <li>Растрите ключицы ладонями до тепла</li>
+                                <li>Наклонитесь вперёд, захватите ключицу у груди как ручку, отводите плечо назад (3 раза)</li>
+                                <li>Захватите середину ключицы – отводите назад (3 раза)</li>
+                                <li>Захватите у плеча – отводите назад (3 раза)</li>
+                                <li>Повторите для другой стороны</li>
+                                <li>Растрите зону ключиц, простукайте под ними, разотрите 7-й шейный позвонок</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-blue-900 mb-2">🫁 Дыхательная практика</h4>
+                            <p class="text-sm text-gray-700">Лягте на спину, одна рука на груди, другая на животе. Вдох носом – живот поднимается, грудь почти не двигается. Выдох через нос. <strong>10 раз</strong> утром и вечером.</p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-blue-900 mb-2">📝 Эмоциональная разгрузка</h4>
+                            <p class="text-sm text-gray-700">Ведите дневник «писем без отправки» – выписывайте обиды, затем рвите лист. Или пойте (даже без голоса) – вибрация выводит застой.</p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-4">
+                            <h4 class="font-bold text-blue-900 mb-2">💆 Массаж декольте</h4>
+                            <p class="text-sm text-gray-700">Круговыми движениями от центра груди к подмышкам, затем от ключиц вниз. Используйте тёплое кунжутное или оливковое масло.</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-green-50 rounded-lg p-3">
+                                <h5 class="font-semibold text-green-900 text-sm mb-1">✅ Добавить</h5>
+                                <p class="text-xs text-green-800">Брокколи, шпинат, морская капуста, тыква, зелёный чай</p>
+                            </div>
+                            <div class="bg-red-50 rounded-lg p-3">
+                                <h5 class="font-semibold text-red-900 text-sm mb-1">❌ Исключить</h5>
+                                <p class="text-xs text-red-800">Кофеин, шоколад, избыток соли</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
     </script>
 </body>
