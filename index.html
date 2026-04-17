@@ -2,501 +2,812 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Женское здоровье: тип + застой + точки (селезёнка, почки) | Месячный план</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комплексная диагностика тела | 2 теста + план на месяц</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
         body {
-            background: linear-gradient(145deg, #f8f5f0 0%, #f0ebe2 100%);
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            padding: 24px 20px;
-            color: #2c241a;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
         }
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
+        .serif { font-family: 'Cormorant Garamond', serif; }
+        .fade-in { animation: fadeIn 0.6s ease-in; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .card {
-            background: rgba(255, 255, 245, 0.95);
-            border-radius: 48px 32px 48px 32px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 0, 0, 0.05);
-            padding: 28px 32px;
-            margin-bottom: 32px;
+        .option-card {
+            transition: all 0.3s ease;
         }
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 500;
-            background: linear-gradient(135deg, #7f5b3e, #b47c4a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 8px;
+        .option-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-        h2 {
-            font-size: 1.6rem;
-            border-left: 5px solid #d99e5e;
-            padding-left: 18px;
-            margin: 20px 0 16px;
-            color: #4a2e1e;
+        .option-card.selected {
+            border-color: #8b5cf6;
+            background-color: #f3e8ff;
+            transform: scale(1.02);
         }
-        h3 {
-            font-weight: 600;
-            font-size: 1.3rem;
-            margin: 16px 0 12px;
-            color: #6b4c2c;
-        }
-        .sub {
-            color: #7a6856;
-            margin-bottom: 28px;
-            border-bottom: 1px dashed #e2cfb5;
-            padding-bottom: 12px;
-        }
-        .question-block {
-            background: #fffef7;
-            border-radius: 28px;
-            padding: 12px 20px;
-            margin-bottom: 24px;
-            border: 1px solid #f2e4d4;
-        }
-        .question-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #f7efdf;
-        }
-        .question-item:last-child {
-            border-bottom: none;
-        }
-        .question-check {
-            width: 26px;
-            height: 26px;
-            accent-color: #d99e5e;
-            margin-top: 2px;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-        .question-text {
-            font-size: 1rem;
-            line-height: 1.4;
-            color: #2f241b;
-        }
-        .btn {
-            background: #d99e5e;
-            border: none;
-            padding: 12px 32px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 60px;
-            color: white;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-top: 8px;
-            margin-right: 16px;
-        }
-        .btn:hover {
-            background: #b47c4a;
-            transform: scale(0.97);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #d99e5e;
-            color: #d99e5e;
-            box-shadow: none;
-        }
-        .btn-outline:hover {
-            background: #d99e5e20;
-        }
-        .result-area {
-            background: #fdf8f0;
-            border-radius: 40px;
-            padding: 24px 28px;
-            margin-top: 24px;
-            border: 1px solid #f0dfca;
-        }
-        .type-badge {
-            display: inline-block;
-            background: #e6cfb0;
-            padding: 6px 20px;
-            border-radius: 40px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-        }
-        .zone-badge {
-            display: inline-block;
-            background: #f0dbbe;
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            margin: 8px 8px 0 0;
-        }
-        .plan-list {
-            padding-left: 24px;
-            margin: 16px 0;
-        }
-        .plan-list li {
-            margin: 8px 0;
-            line-height: 1.4;
-        }
-        hr {
-            margin: 20px 0;
-            border: none;
-            height: 2px;
-            background: linear-gradient(to right, #eedbc8, transparent);
-        }
-        footer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #b19b7e;
-            margin-top: 40px;
-        }
-        @media (max-width: 680px) {
-            .card { padding: 20px; }
-            h1 { font-size: 1.7rem; }
-            .btn { width: 100%; margin-bottom: 12px; }
-        }
-        details {
-            margin-top: 12px;
-            cursor: pointer;
-        }
-        summary {
-            font-weight: 600;
-            color: #9b6e44;
-        }
-        .point-card {
-            background: #f9f2e6;
-            border-radius: 28px;
-            padding: 16px;
-            margin: 16px 0;
-        }
+        .progress-bar { transition: width 0.5s ease; }
+        .type-summer { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); }
+        .type-autumn { background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%); }
+        .type-spring { background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%); }
+        .type-winter { background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%); }
+        .zone-liver { border-left: 4px solid #22c55e; }
+        .zone-pelvis { border-left: 4px solid #ec4899; }
+        .zone-chest { border-left: 4px solid #3b82f6; }
+        .hidden { display: none !important; }
     </style>
 </head>
-<body>
-<div class="container">
-    <div class="card">
-        <h1>🌸 Женское здоровье · Полный тест</h1>
-        <div class="sub">Определите тип конституции, зоны застоя и получите месячный план с упражнениями и точками для селезёнки и почек</div>
+<body class="text-gray-800">
 
-        <div id="questionsContainer"></div>
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="serif text-2xl font-bold text-gray-800">🌿 Комплексная диагностика</h1>
+            <div id="progress-container" class="hidden flex-1 mx-8">
+                <div class="flex justify-between text-xs mb-1 text-gray-600">
+                    <span id="progress-label">Тест 1 из 2</span>
+                    <span id="progress-text">0/16</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div id="progress-bar" class="progress-bar bg-purple-600 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
-            <button class="btn" id="submitBtn">✨ Получить месячный план</button>
-            <button class="btn btn-outline" id="resetBtn">⟳ Очистить всё</button>
+    <main class="pt-24 pb-12 px-4 max-w-4xl mx-auto">
+        
+        <!-- Screen 1: Intro -->
+        <div id="screen-intro" class="fade-in">
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center">
+                <div class="mb-6 text-6xl">🧘‍♀️</div>
+                <h2 class="serif text-4xl font-bold mb-4 text-gray-900">Диагностика на месяц</h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                    Пройдите два последовательных теста, чтобы получить персональный план восстановления 
+                    с рекомендациями по типу конституции, зонам застоя и базовым точкам для укрепления организма.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 text-left mb-8">
+                    <div class="bg-purple-50 rounded-xl p-6">
+                        <h3 class="font-bold text-purple-900 mb-2">Шаг 1: Тип конституции</h3>
+                        <p class="text-sm text-purple-800">Определение базального состояния (Лето/Осень/Весна/Зима) — 16 вопросов</p>
+                    </div>
+                    <div class="bg-pink-50 rounded-xl p-6">
+                        <h3 class="font-bold text-pink-900 mb-2">Шаг 2: Зоны застоя</h3>
+                        <p class="text-sm text-pink-800">Поиск локальных блоков (Печень/Таз/Грудь) — 6 вопросов</p>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg text-left mb-8">
+                    <p class="text-yellow-800 text-sm">
+                        <strong>Внимание:</strong> Тест занимает 7–10 минут. Рекомендации рассчитаны на месяц практики. 
+                        При беременности или острых заболеваниях проконсультируйтесь с врачом.
+                    </p>
+                </div>
+
+                <button onclick="startConstitutionTest()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg">
+                    Начать первый тест
+                </button>
+            </div>
         </div>
 
-        <div id="resultArea" class="result-area" style="display: none;"></div>
-    </div>
-    <footer>
-        * Рекомендации носят ознакомительный характер. При беременности, острых заболеваниях или онкологии перед применением проконсультируйтесь с врачом.<br>
-        🌙 Через месяц перепройдите тест, чтобы скорректировать план.
-    </footer>
-</div>
+        <!-- Screen 2: Constitution Test -->
+        <div id="screen-constitution" class="hidden fade-in">
+            <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10">
+                <h2 class="serif text-2xl font-bold mb-6 text-center text-gray-900">Тест 1: Определение типа конституции</h2>
+                
+                <!-- Block A -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-purple-900 border-b pb-2 mb-4">Блок А. Ваше тело</h3>
+                    <div class="space-y-3">
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="a1">
+                            <span class="font-semibold text-purple-700">A1.</span> Мне постоянно холодно, особенно руки и ноги. Поясница мерзнет даже летом.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="a2">
+                            <span class="font-semibold text-purple-700">A2.</span> Меня бросает то в жар, то в холод. Бывают приливы, ночная потливость.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="spring">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="a3">
+                            <span class="font-semibold text-purple-700">A3.</span> Я отечная, рыхлая. Мешки под глазами утром. Целлюлит.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="a4">
+                            <span class="font-semibold text-purple-700">A4.</span> Сухость везде: кожа, глаза, волосы. Внутри жар, снаружи не горит.
+                        </label>
+                    </div>
+                </div>
 
-<script>
-    (function() {
-        // ---------- ВОПРОСЫ ДЛЯ КОНСТИТУЦИИ (блоки А, Б, В, Г, Д) ----------
-        const constitutionQuestions = [
-            // Блок А: тело
-            { text: "A1 — Мне постоянно холодно, руки и ноги ледяные. Поясница мерзнет даже летом.", typeCode: "cold", group: "А" },
-            { text: "A2 — Бросает то в жар, то в холод. Приливы, ночная потливость.", typeCode: "heat", group: "А" },
-            { text: "A3 — Я отечная, рыхлая. Мешки под глазами утром. Целлюлит, которого раньше не было.", typeCode: "damp", group: "А" },
-            { text: "A4 — Сухость везде: кожа, глаза, волосы, интимная зона. Внутри жар, снаружи нет.", typeCode: "heat", group: "А" },
-            // Блок Б: энергия
-            { text: "Б1 — Утром встаю уже уставшей. Весь день как выжатый лимон.", typeCode: "cold", group: "Б" },
-            { text: "Б2 — Энергии много, но внутри напряжение. Вспыхиваю, потом падаю без сил.", typeCode: "heat", group: "Б" },
-            { text: "Б3 — Тяжесть в теле, как будто налили воды. Всё делаю медленно, через силу.", typeCode: "damp", group: "Б" },
-            { text: "Б4 — Энергии мало, но это пустота, а не бессилие. Тихо, без огня.", typeCode: "cold", group: "Б" },
-            // Блок В: сон
-            { text: "В1 — Засыпаю нормально, но просыпаюсь в 3-4 утра и не могу уснуть.", typeCode: "heat", group: "В" },
-            { text: "В2 — Не могу уснуть. Мысли крутятся, прокручиваю день.", typeCode: "heat", group: "В" },
-            { text: "В3 — Просыпаюсь в поту, сердце колотится.", typeCode: "heat", group: "В" },
-            { text: "В4 — Сплю 7-8 часов, но встаю разбитой, как будто не спала.", typeCode: "cold", group: "В" },
-            // Блок Г: эмоции
-            { text: "Г1 — Всё бесит, срываюсь на близких, потом стыдно.", typeCode: "heat", group: "Г" },
-            { text: "Г2 — Всё внутри кипит, но молчу. Коплю обиды годами.", typeCode: "damp", group: "Г" },
-            { text: "Г3 — Апатия. Ничего не хочется, даже плакать.", typeCode: "cold", group: "Г" },
-            { text: "Г4 — Страхи, тревога, особенно ночью. Кажется, случится плохое.", typeCode: "heat", group: "Г" },
-            // Блок Д: цикл и женское здоровье (из файла, стр.5)
-            { text: "Д1 — Месячные болезненные, со сгустками. ПМС — зверский.", typeCode: "heat", group: "Д" },
-            { text: "Д2 — Месячных почти нет, но приливы и сухость зашкаливают.", typeCode: "heat", group: "Д" },
-            { text: "Д3 — Месячные обильные, цикл скачет. Мажущие кровотечения между циклами.", typeCode: "damp", group: "Д" },
-            { text: "Д4 — Месячные скудные, короткие, мажущие. Или уже год нет.", typeCode: "cold", group: "Д" }
-        ];
+                <!-- Block B -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-purple-900 border-b pb-2 mb-4">Блок Б. Ваша энергия</h3>
+                    <div class="space-y-3">
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="b1">
+                            <span class="font-semibold text-purple-700">Б1.</span> Утром встаю уже уставшей. Весь день как выжатый лимон.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="b2">
+                            <span class="font-semibold text-purple-700">Б2.</span> Вроде энергии много, но внутри напряжение. Вспыхиваю, потом падаю.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="spring">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="b3">
+                            <span class="font-semibold text-purple-700">Б3.</span> Тяжесть в теле, как будто налили воды. Всё делаю медленно.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="b4">
+                            <span class="font-semibold text-purple-700">Б4.</span> Энергии мало, но это «пустота». Тихо, спокойно, но без огня.
+                        </label>
+                    </div>
+                </div>
 
-        // Вопросы для зон застоя (как ранее)
-        const stagnationQuestions = [
-            { text: "🔴 Частые головные боли, напряжение в плечах, раздражительность, вздутие живота, ком в горле.", zone: "liver" },
-            { text: "🔴 Болезненные/нерегулярные месячные, сгустки, ПМС с гневом.", zone: "liver" },
-            { text: "🟣 Тянущие боли внизу живота, застойные выделения, миомы/эндометриоз (диагностированы).", zone: "pelvis" },
-            { text: "🟣 Ощущение тяжести в малом тазу, варикоз в области промежности или ног.", zone: "pelvis" },
-            { text: "🔵 Нагрубание груди перед месячными, боль при нажатии, мастопатия.", zone: "chest" },
-            { text: "🔵 Чувство сдавленности в груди, неглубокое дыхание, эмоциональные «комки» в груди.", zone: "chest" }
-        ];
+                <!-- Block C -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-purple-900 border-b pb-2 mb-4">Блок В. Ваш сон</h3>
+                    <div class="space-y-3">
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="c1">
+                            <span class="font-semibold text-purple-700">В1.</span> Просыпаюсь в 3–4 утра и не могу уснуть.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="c2">
+                            <span class="font-semibold text-purple-700">В2.</span> Не могу уснуть. Мысли крутятся, диалоги в голове.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="c3">
+                            <span class="font-semibold text-purple-700">В3.</span> Просыпаюсь в поту, сердце колотится.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="c4">
+                            <span class="font-semibold text-purple-700">В4.</span> Сплю 7–8 часов, но встаю разбитой.
+                        </label>
+                    </div>
+                </div>
 
-        let selectedConst = new Array(constitutionQuestions.length).fill(false);
-        let selectedStag = new Array(stagnationQuestions.length).fill(false);
+                <!-- Block D -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-purple-900 border-b pb-2 mb-4">Блок Г. Ваши эмоции</h3>
+                    <div class="space-y-3">
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="d1">
+                            <span class="font-semibold text-purple-700">Г1.</span> Всё бесит. Срываюсь на близких, потом стыдно.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="spring">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="d2">
+                            <span class="font-semibold text-purple-700">Г2.</span> Всё внутри кипит, но молчу. Коплю обиды.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="d3">
+                            <span class="font-semibold text-purple-700">Г3.</span> Апатия. Ничего не хочется, даже плакать.
+                        </label>
+                        <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
+                            <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="d4">
+                            <span class="font-semibold text-purple-700">Г4.</span> Страхи, тревога. Особенно ночью.
+                        </label>
+                    </div>
+                </div>
 
-        // Отрисовка всех вопросов
-        function renderAll() {
-            const container = document.getElementById('questionsContainer');
-            if (!container) return;
-            container.innerHTML = '';
+                <div class="flex justify-between">
+                    <button onclick="showScreen('screen-intro')" class="text-gray-500 hover:text-gray-700 font-medium">
+                        ← Назад
+                    </button>
+                    <button onclick="finishConstitutionTest()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-xl">
+                        Перейти к тесту на застой →
+                    </button>
+                </div>
+            </div>
+        </div>
 
-            // Конституция по блокам
-            const blocks = { А: [], Б: [], В: [], Г: [], Д: [] };
-            constitutionQuestions.forEach((q, idx) => { blocks[q.group].push({ ...q, idx }); });
-            for (let [blockName, items] of Object.entries(blocks)) {
-                const blockDiv = document.createElement('div');
-                blockDiv.className = 'question-block';
-                let titleText = '';
-                if (blockName === 'А') titleText = '📋 Блок А — Ваше тело';
-                else if (blockName === 'Б') titleText = '⚡ Блок Б — Ваша энергия';
-                else if (blockName === 'В') titleText = '🌙 Блок В — Ваш сон';
-                else if (blockName === 'Г') titleText = '💭 Блок Г — Ваши эмоции';
-                else titleText = '🩸 Блок Д — Ваш цикл и женское здоровье';
-                const title = document.createElement('h3');
-                title.innerText = titleText;
-                blockDiv.appendChild(title);
-                items.forEach(item => {
-                    const qDiv = document.createElement('div');
-                    qDiv.className = 'question-item';
-                    const chk = document.createElement('input');
-                    chk.type = 'checkbox';
-                    chk.className = 'question-check';
-                    chk.checked = selectedConst[item.idx];
-                    chk.addEventListener('change', (e) => { selectedConst[item.idx] = e.target.checked; });
-                    const textSpan = document.createElement('span');
-                    textSpan.className = 'question-text';
-                    textSpan.innerText = item.text;
-                    qDiv.appendChild(chk);
-                    qDiv.appendChild(textSpan);
-                    blockDiv.appendChild(qDiv);
-                });
-                container.appendChild(blockDiv);
-            }
+        <!-- Screen 3: Stagnation Test -->
+        <div id="screen-stagnation" class="hidden fade-in">
+            <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10">
+                <h2 class="serif text-2xl font-bold mb-2 text-center text-gray-900">Тест 2: Зоны застоя энергии</h2>
+                <p class="text-center text-gray-600 mb-6 text-sm">Отметьте все симптомы, которые актуальны для вас (можно несколько)</p>
+                
+                <div class="space-y-4">
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer zone-liver" data-zone="liver">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="stag-check mt-1 mr-4 w-5 h-5 text-green-600" data-id="s1">
+                            <div>
+                                <h4 class="font-bold text-gray-900">Головные боли, напряжение в плечах</h4>
+                                <p class="text-gray-600 text-sm">Раздражительность, вздутие живота, чувство кома в горле</p>
+                                <span class="inline-block mt-2 text-xs font-bold text-green-700 bg-green-100 px-2 py-1 rounded">ПЕЧЕНЬ</span>
+                            </div>
+                        </div>
+                    </label>
 
-            // Зоны застоя
-            const stagDiv = document.createElement('div');
-            stagDiv.className = 'question-block';
-            stagDiv.innerHTML = '<h3>🌀 Зоны застоя (выберите всё, что про вас)</h3><div style="font-size:0.9rem; margin-bottom:10px;">Застой энергии мешает здоровью. Определите, где пробки.</div>';
-            stagnationQuestions.forEach((item, idx) => {
-                const qDiv = document.createElement('div');
-                qDiv.className = 'question-item';
-                const chk = document.createElement('input');
-                chk.type = 'checkbox';
-                chk.className = 'question-check';
-                chk.checked = selectedStag[idx];
-                chk.addEventListener('change', (e) => { selectedStag[idx] = e.target.checked; });
-                const textSpan = document.createElement('span');
-                textSpan.className = 'question-text';
-                textSpan.innerText = item.text;
-                qDiv.appendChild(chk);
-                qDiv.appendChild(textSpan);
-                stagDiv.appendChild(qDiv);
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer zone-liver" data-zone="liver">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="stag-check mt-1 mr-4 w-5 h-5 text-green-600" data-id="s2">
+                            <div>
+                                <h4 class="font-bold text-gray-900">Болезненные или нерегулярные месячные</h4>
+                                <p class="text-gray-600 text-sm">Наличие сгустков, сильный ПМС с приступами гнева</p>
+                                <span class="inline-block mt-2 text-xs font-bold text-green-700 bg-green-100 px-2 py-1 rounded">ПЕЧЕНЬ</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer zone-pelvis" data-zone="pelvis">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="stag-check mt-1 mr-4 w-5 h-5 text-pink-600" data-id="s3">
+                            <div>
+                                <h4 class="font-bold text-gray-900">Тянущие боли внизу живота</h4>
+                                <p class="text-gray-600 text-sm">Застойные выделения, миомы матки или эндометриоз</p>
+                                <span class="inline-block mt-2 text-xs font-bold text-pink-700 bg-pink-100 px-2 py-1 rounded">МАЛЫЙ ТАЗ</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer zone-pelvis" data-zone="pelvis">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="stag-check mt-1 mr-4 w-5 h-5 text-pink-600" data-id="s4">
+                            <div>
+                                <h4 class="font-bold text-gray-900">Тяжесть в малом тазу</h4>
+                                <p class="text-gray-600 text-sm">Варикозное расширение вен в области промежности или на ногах</p>
+                                <span class="inline-block mt-2 text-xs font-bold text-pink-700 bg-pink-100 px-2 py-1 rounded">МАЛЫЙ ТАЗ</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer zone-chest" data-zone="chest">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="stag-check mt-1 mr-4 w-5 h-5 text-blue-600" data-id="s5">
+                            <div>
+                                <h4 class="font-bold text-gray-900">Нагрубание молочных желёз перед месячными</h4>
+                                <p class="text-gray-600 text-sm">Боль при нажатии на грудь, диагностированная мастопатия</p>
+                                <span class="inline-block mt-2 text-xs font-bold text-blue-700 bg-blue-100 px-2 py-1 rounded">ГРУДНАЯ КЛЕТКА</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="option-card block p-5 border-2 border-gray-200 rounded-xl cursor-pointer zone-chest" data-zone="chest">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="stag-check mt-1 mr-4 w-5 h-5 text-blue-600" data-id="s6">
+                            <div>
+                                <h4 class="font-bold text-gray-900">Чувство сдавленности в грудной клетке</h4>
+                                <p class="text-gray-600 text-sm">Неглубокое дыхание, «эмоциональные комки» в груди</p>
+                                <span class="inline-block mt-2 text-xs font-bold text-blue-700 bg-blue-100 px-2 py-1 rounded">ГРУДНАЯ КЛЕТКА</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button onclick="showScreen('screen-constitution')" class="text-gray-500 hover:text-gray-700 font-medium">
+                        ← Вернуться к первому тесту
+                    </button>
+                    <button onclick="showFinalResults()" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-xl">
+                        Получить план на месяц
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 4: Final Results -->
+        <div id="screen-final" class="hidden fade-in space-y-6">
+            
+            <!-- Summary Card -->
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl shadow-xl p-8 border-2 border-purple-100">
+                <h2 class="serif text-3xl font-bold mb-6 text-center text-gray-900">🎯 Ваш персональный план на месяц</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div id="result-constitution" class="bg-white/80 rounded-2xl p-6">
+                        <!-- Constitution result inserted here -->
+                    </div>
+                    <div id="result-stagnation" class="bg-white/80 rounded-2xl p-6">
+                        <!-- Stagnation result inserted here -->
+                    </div>
+                </div>
+
+                <div class="bg-white/70 rounded-xl p-4 text-center">
+                    <p class="text-gray-700 font-medium">Все рекомендации ниже рассчитаны на <strong>4 недели</strong> регулярной практики</p>
+                </div>
+            </div>
+
+            <!-- Specific Recommendations by Constitution -->
+            <div id="constitution-recommendations" class="bg-white rounded-3xl shadow-xl p-8">
+                <!-- Inserted via JS -->
+            </div>
+
+            <!-- Specific Recommendations by Stagnation Zones -->
+            <div id="stagnation-recommendations" class="bg-white rounded-3xl shadow-xl p-8">
+                <!-- Inserted via JS -->
+            </div>
+
+            <!-- NEW: Month Plan - Spleen Points -->
+            <div class="bg-white rounded-3xl shadow-xl p-8">
+                <h3 class="serif text-2xl font-bold mb-6 text-purple-900 flex items-center">
+                    <span class="mr-3">🦶</span> 1. Точки для укрепления селезёнки (ежедневно)
+                </h3>
+                
+                <div class="bg-purple-50 rounded-xl p-6 mb-6">
+                    <h4 class="font-bold text-purple-900 text-lg mb-2">САНЬ-ИНЬ-ЦЗЯО (SP6) — «женская красота и молодость»</h4>
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-sm text-gray-700 mb-2"><strong>Где найти:</strong> на внутренней стороне голени, на 4 пальца выше косточки внутренней лодыжки (по прямой линии).</p>
+                            <p class="text-sm text-gray-700"><strong>Как работать:</strong> массируйте большим пальцем <strong>30 раз в одну сторону, затем 30 раз в другую</strong> на каждой ноге. Делайте <strong>1 раз в день</strong> (утром или днём).</p>
+                        </div>
+                        <div class="bg-yellow-100 rounded-lg p-3 text-sm">
+                            <strong>⚠️ Важно:</strong> беременным точку массировать нельзя!
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-3 text-sm text-gray-700">
+                        <strong>Эффект:</strong> тонизирует селезёнку, убирает сырость, помогает при отёках, усталости, тяжёлом пищеварении, регулирует женскую эндокринную систему.
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: Month Plan - Kidney Points -->
+            <div class="bg-white rounded-3xl shadow-xl p-8">
+                <h3 class="serif text-2xl font-bold mb-6 text-indigo-900 flex items-center">
+                    <span class="mr-3">🔥</span> 2. Точки для укрепления почек (ежедневно)
+                </h3>
+
+                <!-- CV4 -->
+                <div class="bg-indigo-50 rounded-xl p-6 mb-4">
+                    <h4 class="font-bold text-indigo-900 text-lg mb-2">ГУАНЬ-ЮАНЬ (CV4) — «Море энергии»</h4>
+                    <p class="text-sm text-gray-700 mb-3"><strong>Где найти:</strong> на средней линии живота, на <strong>4 пальца ниже пупка</strong>.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg p-3">
+                            <p class="text-sm font-semibold text-indigo-800 mb-1">• При холоде, слабости, опущении:</p>
+                            <p class="text-sm text-gray-700">Согрейте ладони, положите тёплую ладонь на точку и делайте <strong>вибрационный массаж 3–5 минут вечером</strong> перед сном. Можно использовать грелку с солью или перцовый пластырь на ночь (через день).</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <p class="text-sm font-semibold text-indigo-800 mb-1">• При приливах, жаре, бессоннице:</p>
+                            <p class="text-sm text-gray-700"><strong>Не греть!</strong> Мягко надавите подушечкой большого пальца и делайте круговые движения по часовой стрелке 3–5 минут вечером.</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <p class="text-sm font-semibold text-indigo-800 mb-1">• При опущении матки или мочевого пузыря:</p>
+                            <p class="text-sm text-gray-700">Утром делайте вибрационное постукивание кончиками пальцев по точке 2–3 минуты, затем массаж тёплой ладонью по часовой стрелке 5 минут.</p>
+                        </div>
+                    </div>
+                    <div class="mt-3 bg-white rounded-lg p-3 text-sm text-gray-700">
+                        <strong>Эффект:</strong> наполняет энергию почек (Цзин), согревает, поднимает опущенные органы, помогает при недержании мочи, болях в пояснице, бессоннице.
+                    </div>
+                </div>
+
+                <!-- KI1 -->
+                <div class="bg-blue-50 rounded-xl p-6">
+                    <h4 class="font-bold text-blue-900 text-lg mb-2">ЮН-ЦЮАНЬ (KI1) — «Бурлящий родник»</h4>
+                    <p class="text-sm text-gray-700 mb-3"><strong>Где найти:</strong> на стопе, в ямке под подушечкой (при согнутых пальцах – в центре образовавшейся складки).</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-3 text-sm">
+                        <div class="bg-white rounded-lg p-3">
+                            <strong>Простой способ:</strong> каждую ночь надевайте тёплые шерстяные носки (стимулирует точку).
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <strong>Активнее:</strong> наклейте на ночь перцовый пластырь на точку на обеих стопах (8–10 часов).
+                        </div>
+                        <div class="bg-white rounded-lg p-3">
+                            <strong>Массаж:</strong> круговыми движениями по 1 минуте на каждую стопу перед сном.
+                        </div>
+                    </div>
+                    <div class="mt-3 bg-white rounded-lg p-3 text-sm text-gray-700">
+                        <strong>Эффект:</strong> опускает «блуждающий жар» вниз, помогает при приливах, головных болях, бессоннице, ощущении холода в ногах, гипертонии.
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: Month Plan - Qi Lifting Exercises -->
+            <div class="bg-white rounded-3xl shadow-xl p-8">
+                <h3 class="serif text-2xl font-bold mb-6 text-orange-900 flex items-center">
+                    <span class="mr-3">⬆️</span> 3. Упражнения для поднятия Ци (ежедневно, до обеда)
+                </h3>
+                
+                <div class="bg-orange-50 rounded-xl p-6 mb-4 border-2 border-orange-200">
+                    <p class="text-sm text-orange-800 mb-4">
+                        <strong>Важно:</strong> Выполняйте эти упражнения <strong>ежедневно в первой половине дня</strong> (до 12:00 или обеда). Они поднимают общий тонус, возвращают бодрость и борются с опущением энергии.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="border-2 border-gray-100 rounded-xl p-6">
+                        <div class="flex items-start mb-3">
+                            <span class="text-3xl mr-4">🥁</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">«Небесный барабан»</h4>
+                                <span class="text-xs font-semibold text-orange-700 bg-orange-100 px-2 py-1 rounded">Утром или до обеда</span>
+                            </div>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700 mb-3 ml-12">
+                            <li>Встаньте прямо, поднимитесь на носочки.</li>
+                            <li>Не касаясь пятками пола, легко <strong>постукивайте кончиками пальцев по макушке</strong> (теменной области) – 30 раз.</li>
+                            <li>Опуститесь на пятки, отдохните 10 секунд. Повторите 2–3 подхода.</li>
+                        </ol>
+                        <div class="bg-green-50 rounded-lg p-3 ml-12">
+                            <p class="text-sm text-green-800"><strong>Эффект:</strong> поднимает Ци, очищает голову, улучшает память, даёт прилив бодрости.</p>
+                        </div>
+                    </div>
+
+                    <div class="border-2 border-gray-100 rounded-xl p-6">
+                        <div class="flex items-start mb-3">
+                            <span class="text-3xl mr-4">💨</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">«Насос»</h4>
+                                <span class="text-xs font-semibold text-orange-700 bg-orange-100 px-2 py-1 rounded">Первая половина дня</span>
+                            </div>
+                        </div>
+                        <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700 mb-3 ml-12">
+                            <li>Лягте на спину, ноги согните в коленях, стопы на полу.</li>
+                            <li>Поднимите таз вверх (как в «полумосте»).</li>
+                            <li>Втяните живот и мышцы промежности, задержите дыхание и <strong>удерживайте напряжение 30 счётов</strong>.</li>
+                            <li>Выдохните, расслабьтесь, опустите таз. Повторите <strong>3–5 подходов</strong>.</li>
+                        </ol>
+                        <div class="bg-green-50 rounded-lg p-3 ml-12">
+                            <p class="text-sm text-green-800"><strong>Эффект:</strong> поднимает энергию внутренних органов, укрепляет тазовое дно, помогает при опущении матки, геморрое, хронической усталости.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Summary -->
+            <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl shadow-xl p-8 border-2 border-gray-200">
+                <h3 class="serif text-2xl font-bold mb-6 text-gray-900">📅 Ваша схема на месяц</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-3 border-b pb-2">Утро (до обеда)</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-start"><span class="text-purple-600 mr-2">●</span> Точка Сань-Инь-Цзяо (SP6) — 30+30 раз</li>
+                            <li class="flex items-start"><span class="text-orange-600 mr-2">●</span> «Небесный барабан» — 2-3 подхода</li>
+                            <li class="flex items-start"><span class="text-orange-600 mr-2">●</span> «Насос» — 3-5 подходов</li>
+                            <li class="flex items-start"><span class="text-blue-600 mr-2">●</span> Упражнения по зонам застоя (см. выше)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 mb-3 border-b pb-2">Вечер (перед сном)</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-start"><span class="text-indigo-600 mr-2">●</span> Точка Гуань-Юань (CV4) — 3-5 минут</li>
+                            <li class="flex items-start"><span class="text-blue-600 mr-2">●</span> Точка Юн-Цюань (KI1) — шерстяные носки или пластырь</li>
+                            <li class="flex items-start"><span class="text-purple-600 mr-2">●</span> Практики по типу конституции</li>
+                            <li class="flex items-start"><span class="text-gray-600 mr-2">●</span> Ложиться до 23:00</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-yellow-50 rounded-lg p-4 border-l-4 border-yellow-400">
+                    <p class="text-yellow-800 text-sm">
+                        <strong>Противопоказания:</strong> Точки акупрессуры (особенно SP6, LV3) не используются при беременности. 
+                        При острых болях, подозрении на онкологию или обострении хронических заболеваний проконсультируйтесь с врачом.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="resetAll()" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white font-bold py-4 rounded-xl transition-all">
+                    Пройти тест заново
+                </button>
+                <button onclick="window.print()" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-xl transition-all">
+                    🖨️ Печать плана
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        // State management
+        let constitutionData = {
+            answers: {},
+            type: '',
+            scores: {}
+        };
+        
+        let stagnationData = {
+            answers: {},
+            zones: []
+        };
+
+        // Helper functions
+        function showScreen(screenId) {
+            document.querySelectorAll('[id^="screen-"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function updateProgress(current, total, label) {
+            const percent = (current / total) * 100;
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('progress-text').textContent = current + '/' + total;
+            document.getElementById('progress-label').textContent = label;
+        }
+
+        // Constitution Test Logic
+        function startConstitutionTest() {
+            showScreen('screen-constitution');
+            document.getElementById('progress-container').classList.remove('hidden');
+            updateProgress(0, 16, 'Тест 1 из 2');
+            
+            // Reset previous answers
+            document.querySelectorAll('.const-check').forEach(cb => {
+                cb.checked = false;
+                cb.closest('.option-card').classList.remove('selected');
             });
-            container.appendChild(stagDiv);
+            constitutionData.answers = {};
         }
 
-        // Подсчёт типа конституции
-        function computeConstitution() {
-            let heat = 0, cold = 0, damp = 0;
-            for (let i = 0; i < constitutionQuestions.length; i++) {
-                if (selectedConst[i]) {
-                    const tc = constitutionQuestions[i].typeCode;
-                    if (tc === 'heat') heat++;
-                    else if (tc === 'cold') cold++;
-                    else if (tc === 'damp') damp++;
+        document.querySelectorAll('.const-check').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const card = this.closest('.option-card');
+                if (this.checked) {
+                    card.classList.add('selected');
+                    constitutionData.answers[this.dataset.id] = card.dataset.type;
+                } else {
+                    card.classList.remove('selected');
+                    delete constitutionData.answers[this.dataset.id];
                 }
-            }
-            const isWinterGarden = (cold >= 1 && damp >= 1);
-            let mainType = '';
-            if (isWinterGarden) mainType = 'зимний_сад';
-            else {
-                if (heat >= cold && heat >= damp) mainType = 'летний_полдень';
-                else if (cold >= heat && cold >= damp) mainType = 'осенняя_листва';
-                else mainType = 'весенняя_вода';
-            }
-            let isMixed = false;
-            let secondType = '';
-            if (!isWinterGarden) {
-                const scores = { heat, cold, damp };
-                const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
-                if (sorted[0][1] > 0 && sorted[1][1] > 0 && (sorted[0][1] - sorted[1][1]) <= 1) {
-                    isMixed = true;
-                    if (sorted[1][0] === 'heat') secondType = 'летний_полдень';
-                    else if (sorted[1][0] === 'cold') secondType = 'осенняя_листва';
-                    else secondType = 'весенняя_вода';
-                }
-            }
-            return { mainType, isMixed, secondType, heat, cold, damp };
-        }
+                updateProgress(Object.keys(constitutionData.answers).length, 16, 'Тест 1 из 2');
+            });
+        });
 
-        // Зоны застоя
-        function computeZones() {
-            let zones = { liver: false, pelvis: false, chest: false };
-            for (let i = 0; i < stagnationQuestions.length; i++) {
-                if (selectedStag[i]) {
-                    const zone = stagnationQuestions[i].zone;
-                    zones[zone] = true;
-                }
-            }
-            return zones;
-        }
-
-        // ----- МЕСЯЧНЫЕ РЕКОМЕНДАЦИИ (тип + застой + точки для селезёнки и почек) -----
-        function getMonthPlan(mainType, isMixed, secondType, zones) {
-            let plan = `<div style="background:#fff5e8; border-radius: 32px; padding: 20px;">`;
+        function finishConstitutionTest() {
+            // Calculate constitution type
+            const scores = { summer: 0, autumn: 0, spring: 0, winter: 0 };
             
-            // 1. План по типу конституции
-            plan += `<h3>📆 1. Месячный план для вашей конституции</h3>`;
-            if (isMixed && secondType) {
-                plan += `<p><strong>🔁 Смешанный тип:</strong> ${typeName(mainType)} + ${typeName(secondType)}. Начните с ведущего симптома, через 2 недели добавьте второй план.</p>`;
-                plan += `<details><summary>🌞 План Летний полдень (жар)</summary>${летнийПолденьMonth()}</details>`;
-                plan += `<details><summary>🍂 План Осенняя листва (холод)</summary>${осенняяЛистваMonth()}</details>`;
-                plan += `<details><summary>💧 План Весенняя вода (сырость)</summary>${весенняяВодаMonth()}</details>`;
-                if (mainType === 'зимний_сад') plan += `<details><summary>❄️ План Зимний сад</summary>${зимнийСадMonth()}</details>`;
+            Object.values(constitutionData.answers).forEach(type => {
+                if (scores[type] !== undefined) scores[type]++;
+            });
+
+            // Check winter combinations
+            const hasA1 = constitutionData.answers['a1'] !== undefined;
+            const hasA3 = constitutionData.answers['a3'] !== undefined;
+            const hasB1 = constitutionData.answers['b1'] !== undefined;
+            const hasB3 = constitutionData.answers['b3'] !== undefined;
+            const hasD2 = constitutionData.answers['d2'] !== undefined;
+            const hasD3 = constitutionData.answers['d3'] !== undefined;
+
+            if ((hasA1 && hasA3) || (hasA1 && hasB3) || (hasB1 && hasB3) || (hasD2 && hasD3)) {
+                scores.winter += 2;
+            }
+
+            let maxScore = Math.max(...Object.values(scores));
+            let primaryTypes = Object.keys(scores).filter(key => scores[key] === maxScore);
+            
+            if (primaryTypes.length === 1) {
+                constitutionData.type = primaryTypes[0];
             } else {
-                switch(mainType) {
-                    case 'летний_полдень': plan += летнийПолденьMonth(); break;
-                    case 'осенняя_листва': plan += осенняяЛистваMonth(); break;
-                    case 'весенняя_вода': plan += весенняяВодаMonth(); break;
-                    case 'зимний_сад': plan += зимнийСадMonth(); break;
-                    default: plan += '<p>Следуйте общим рекомендациям.</p>';
+                if (primaryTypes.includes('summer')) constitutionData.type = 'summer';
+                else if (primaryTypes.includes('winter')) constitutionData.type = 'winter';
+                else constitutionData.type = primaryTypes[0];
+            }
+
+            constitutionData.scores = scores;
+
+            // Go to stagnation test
+            startStagnationTest();
+        }
+
+        // Stagnation Test Logic
+        function startStagnationTest() {
+            showScreen('screen-stagnation');
+            updateProgress(0, 6, 'Тест 2 из 2');
+            
+            document.querySelectorAll('.stag-check').forEach(cb => {
+                cb.checked = false;
+                cb.closest('.option-card').classList.remove('selected');
+            });
+            stagnationData.answers = {};
+        }
+
+        document.querySelectorAll('.stag-check').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const card = this.closest('.option-card');
+                if (this.checked) {
+                    card.classList.add('selected');
+                    stagnationData.answers[this.dataset.id] = card.dataset.zone;
+                } else {
+                    card.classList.remove('selected');
+                    delete stagnationData.answers[this.dataset.id];
                 }
-            }
-            
-            // 2. Работа с зонами застоя
-            plan += `<hr><h3>🌀 2. Убираем застой: упражнения на месяц</h3>`;
-            if (zones.liver || zones.pelvis || zones.chest) {
-                if (zones.liver) plan += `<div class="point-card"><strong>🔴 Застой в печени:</strong> упражнение «Рубим дрова» — каждый день утром (10 раз со звуком «ХА!»). + Точка ТАЙ-ЧУН (между 1 и 2 пальцем стопы) — массаж 2 мин перед сном.</div>`;
-                if (zones.pelvis) plan += `<div class="point-card"><strong>🟣 Застой в малом тазу:</strong> упражнение «Выдыхаем обиды» — пальцы на правое подреберье, наклон со звуком «ХУ» 3 раза ежедневно. + Тепло на низ живота (грелка 15 мин вечером).</div>`;
-                if (zones.chest) plan += `<div class="point-card"><strong>🔵 Застой в грудной клетке:</strong> упражнение «Раскрытие грудной клетки» (растирание ключиц, отведение плеч с захватом ключицы в 3 точках) — каждый день. + Дыхание животом 10 раз утром и вечером.</div>`;
-            } else {
-                plan += `<p>✨ У вас нет ярко выраженных зон застоя. Для профилактики делайте упражнение «Раскрытие грудной клетки» 3 раза в неделю.</p>`;
-            }
-            
-            // 3. Точки для селезёнки и почек (основные)
-            plan += `<hr><h3>🌱 3. Точки для укрепления селезёнки и почек (ежедневно, весь месяц)</h3>`;
-            plan += `<div class="point-card">
-                        <strong>🥄 СЕЛЕЗЁНКА — точка САНЬ-ИНЬ-ЦЗЯО (SP6)</strong><br>
-                        <em>Где найти:</em> на внутренней стороне голени, 4 пальца выше косточки лодыжки.<br>
-                        <em>Как работать:</em> массируйте большим пальцем по 30 раз в одну сторону, затем 30 раз в другую на каждой ноге (или наклейте аку-пластырь крестиком на сутки).<br>
-                        <em>Эффект:</em> убирает сырость, тонизирует селезёнку, помогает при отёках, усталости, слабом пищеварении. Делать 1 раз в день (лучше утром).
-                    </div>`;
-            plan += `<div class="point-card">
-                        <strong>🔥 ПОЧКИ — точка ГУАНЬ-ЮАНЬ (CV4)</strong><br>
-                        <em>Где найти:</em> на 4 пальца ниже пупка по средней линии живота.<br>
-                        <em>Как работать:</em> растереть ладони до тепла, положить тёплую ладонь на точку, вибрационный массаж 3–5 минут вечером перед сном. Если холодные конечности — можно приложить грелку с солью на 15 мин.<br>
-                        <em>Эффект:</em> наполняет энергию почек (Цзин), согревает, помогает при опущении, недержании, болях в пояснице, бессоннице.
-                    </div>`;
-            plan += `<div class="point-card">
-                        <strong>❄️ ПОЧКИ (дополнительная) — точка ЮН-ЦЮАНЬ (KI1)</strong><br>
-                        <em>Где найти:</em> на стопе, в ямке под подушечкой (при согнутых пальцах).<br>
-                        <em>Как работать:</em> наклеить перцовый пластырь на ночь или надеть шерстяные носки. Либо массировать круговыми движениями по 1 минуте каждую стопу перед сном.<br>
-                        <em>Эффект:</em> опускает энергию вниз, помогает при приливах, головных болях, бессоннице, холоде в ногах.
-                    </div>`;
-            plan += `<p><strong>✅ РЕЖИМ НА МЕСЯЦ:</strong><br>
-                    - Каждое утро: точка Сань-Инь-Цзяо (SP6) + утренний тёплый напиток (вода + лимон + имбирь, если нет противопоказаний).<br>
-                    - Каждый вечер: точка Гуань-Юань (CV4) 3-5 мин + шерстяные носки (при холоде).<br>
-                    - В течение дня: упражнения на застой (если есть активные зоны).<br>
-                    - Сон до 23:00 ежедневно.<br>
-                    - Через месяц перепройдите тест, чтобы скорректировать программу.
-                    </p>`;
-            plan += `</div>`;
-            return plan;
-        }
+                updateProgress(Object.keys(stagnationData.answers).length, 6, 'Тест 2 из 2');
+            });
+        });
 
-        function typeName(t) {
-            const names = { 'летний_полдень':'☀️ Летний полдень (жар, пустота Инь)', 'осенняя_листва':'🍂 Осенняя листва (холод, недостаток Ян)', 'весенняя_вода':'💧 Весенняя вода (сырость, застой)', 'зимний_сад':'❄️ Зимний сад (холод + сырость)' };
-            return names[t] || t;
-        }
+        // Final Results
+        function showFinalResults() {
+            // Determine active zones
+            stagnationData.zones = [];
+            if (stagnationData.answers['s1'] || stagnationData.answers['s2']) stagnationData.zones.push('liver');
+            if (stagnationData.answers['s3'] || stagnationData.answers['s4']) stagnationData.zones.push('pelvis');
+            if (stagnationData.answers['s5'] || stagnationData.answers['s6']) stagnationData.zones.push('chest');
 
-        // Месячные планы для каждого типа (сжатые, но полные)
-        function летнийПолденьMonth() {
-            return `<ul class="plan-list">
-                <li><strong>Питание:</strong> исключить кофе, острое, алкоголь. Добавить индейку, сельдерей, огурец, мяту, кабачок, тофу. Пить воду комнатной температуры.</li>
-                <li><strong>Дыхание:</strong> «прохладная трубочка» (свернуть язык, вдох через трубочку, выдох носом) — 5-7 раз перед сном и при приливах.</li>
-                <li><strong>Режим:</strong> ложиться до 23:00. При пробуждении ночью — дыхание трубочкой.</li>
-                <li><strong>Точки:</strong> Сань-Инь-Цзяо (SP6) утром, Гуань-Юань (CV4) вечером лёгкое давление без прогревания (седативно). Юн-Цюань (KI1) — лёгкий массаж перед сном.</li>
-                <li><strong>Дополнительно:</strong> убрать перегревающие процедуры (сауна, активное солнце).</li>
-            </ul>`;
-        }
-        function осенняяЛистваMonth() {
-            return `<ul class="plan-list">
-                <li><strong>Питание:</strong> только тёплое, варёное, запечённое. Исключить сырые овощи, холодные напитки. Полезны: тыква, морковь, каши, имбирь, корица, курица, баранина.</li>
-                <li><strong>Утро:</strong> натощак тёплая вода + лимон + имбирь.</li>
-                <li><strong>Вечер:</strong> вибрационный массаж Гуань-Юань (CV4) тёплой ладонью 3-5 мин, шерстяные носки.</li>
-                <li><strong>Точки:</strong> Сань-Инь-Цзяо (SP6) утром, Юн-Цюань (KI1) — перцовый пластырь на ночь или тёплые носки.</li>
-                <li><strong>Движение:</strong> лёгкая гимнастика или ходьба 20 мин утром.</li>
-            </ul>`;
-        }
-        function весенняяВодаMonth() {
-            return `<ul class="plan-list">
-                <li><strong>Питание:</strong> исключить молочные продукты, сладкое, мучное, бананы, арахис. Добавить рис, кукурузу, тыкву, редьку, сельдерей, зелёный чай с мятой.</li>
-                <li><strong>Утро:</strong> тёплая вода + лимон + имбирь (сушит сырость).</li>
-                <li><strong>Упражнение:</strong> «Выдыхаем обиды» (3 раза) ежедневно.</li>
-                <li><strong>Точки:</strong> Сань-Инь-Цзяо (SP6) — массаж 30+30 раз (убирает сырость). Гуань-Юань (CV4) — вибромассаж 3 мин вечером. При запорах — семена кофе (½ ч.л. на ночь).</li>
-                <li><strong>Движение:</strong> ходьба 30-40 мин, лёгкие прыжки.</li>
-            </ul>`;
-        }
-        function зимнийСадMonth() {
-            return `<ul class="plan-list">
-                <li><strong>Комбинация холода и сырости:</strong> выполняйте одновременно согревающие и осушающие практики.</li>
-                <li><strong>Питание:</strong> только тёплые каши, тушёные овощи (тыква, морковь), имбирь, корица, чёрный перец. Без сырого, сладкого, молочного.</li>
-                <li><strong>Утро:</strong> тёплая вода + лимон + имбирь + упражнение «Выдыхаем обиды».</li>
-                <li><strong>Вечер:</strong> вибромассаж Гуань-Юань (CV4) 5 мин + шерстяные носки.</li>
-                <li><strong>Точки:</strong> Сань-Инь-Цзяо (SP6) — ежедневно, Гуань-Юань (CV4) — прогревание (грелка с солью через день), Юн-Цюань (KI1) — перцовый пластырь на ночь.</li>
-            </ul>`;
-        }
-
-        function showResult() {
-            const { mainType, isMixed, secondType, heat, cold, damp } = computeConstitution();
-            const zones = computeZones();
-            const totalConst = selectedConst.filter(v=>v).length;
-            if (totalConst === 0 && selectedStag.filter(v=>v).length === 0) {
-                document.getElementById('resultArea').style.display = 'block';
-                document.getElementById('resultArea').innerHTML = '<div style="padding:20px;text-align:center;">🌸 Вы не выбрали ни одного симптома. Отметьте хотя бы один пункт.</div>';
+            if (stagnationData.zones.length === 0) {
+                alert('Пожалуйста, отметьте хотя бы один симптом зоны застоя');
                 return;
             }
 
-            const monthPlan = getMonthPlan(mainType, isMixed, secondType, zones);
-            const summary = `
-                <div class="type-badge">${typeName(mainType)} ${isMixed ? ' + смешанный оттенок' : ''}</div>
-                <div style="font-size:0.9rem; margin-bottom:16px;">🔥 Жар: ${heat} | ❄️ Холод: ${cold} | 💧 Сырость: ${damp}</div>
-                ${monthPlan}
-                <hr>
-                <div style="background:#e6f0ea; padding:16px; border-radius:28px; text-align:center;">
-                📅 <strong>Через месяц перепройдите тест</strong> — ваше состояние может измениться, и программа скорректируется.<br>
-                🌙 Сон до 23:00, утренняя диагностика языка, ежедневные точки — основа здоровья.
-                </div>
+            showScreen('screen-final');
+            document.getElementById('progress-container').classList.add('hidden');
+
+            renderConstitutionResult();
+            renderStagnationResult();
+            renderConstitutionPlan();
+            renderStagnationPlan();
+        }
+
+        function renderConstitutionResult() {
+            const configs = {
+                summer: { icon: '☀️', title: 'Летний полдень', desc: 'Жар, пустота Инь, перегретая печень', color: 'text-yellow-800' },
+                autumn: { icon: '🍂', title: 'Осенняя листва', desc: 'Холод, пустота Ян, недостаток энергии', color: 'text-orange-800' },
+                spring: { icon: '💧', title: 'Весенняя вода', desc: 'Сырость, застой, тяжесть', color: 'text-blue-800' },
+                winter: { icon: '❄️', title: 'Зимний сад', desc: 'Холод + сырость, выраженный застой', color: 'text-gray-800' }
+            };
+
+            const cfg = configs[constitutionData.type];
+            document.getElementById('result-constitution').innerHTML = `
+                <div class="text-4xl mb-2">${cfg.icon}</div>
+                <h3 class="font-bold text-lg ${cfg.color}">${cfg.title}</h3>
+                <p class="text-sm text-gray-600">${cfg.desc}</p>
             `;
-            const resultDiv = document.getElementById('resultArea');
-            resultDiv.style.display = 'block';
-            resultDiv.innerHTML = summary;
-            window.scrollTo({ top: resultDiv.offsetTop - 30, behavior: 'smooth' });
+        }
+
+        function renderStagnationResult() {
+            const zoneNames = {
+                liver: '<span class="text-green-700 font-semibold">Печень</span>',
+                pelvis: '<span class="text-pink-700 font-semibold">Малый таз</span>',
+                chest: '<span class="text-blue-700 font-semibold">Грудная клетка</span>'
+            };
+            
+            const zonesText = stagnationData.zones.map(z => zoneNames[z]).join(' + ');
+            document.getElementById('result-stagnation').innerHTML = `
+                <div class="text-4xl mb-2">🔄</div>
+                <h3 class="font-bold text-lg text-gray-900">Зоны застоя:</h3>
+                <p class="text-sm text-gray-600">${zonesText}</p>
+            `;
+        }
+
+        function renderConstitutionPlan() {
+            const plans = {
+                summer: {
+                    goal: 'Гасить внутренний огонь, увлажнять и успокаивать',
+                    tasks: [
+                        {icon: '🌬️', title: 'Дыхание «прохладной трубочкой»', desc: 'Вечером: сверните язык трубочкой, вдох через неё с прохладой, выдох носом. 5-7 раз. При приливе жара повторите.', strong: true},
+                        {icon: '😴', title: 'Режим сна', desc: 'Ложиться до 23:00. При просыпании ночью — дыхание трубочкой. Прохладное полотенце на лоб/запястья.', strong: true},
+                        {icon: '🚫', title: 'Исключить полностью', desc: 'Кофе, острые специи, алкоголь, жирное мясо, сладкое, выпечку.', strong: false},
+                        {icon: '🥗', title: 'Добавить в питание', desc: 'Индейка, сельдерей, огурец, мята, зелёный салат, кабачок, тофу, вода комнатной температуры.', strong: false}
+                    ]
+                },
+                autumn: {
+                    goal: 'Согреть тело, наполнить энергией, дать тепло в центр',
+                    tasks: [
+                        {icon: '🔥', title: 'Вибрационный массаж Гуань-Юань (CV4)', desc: 'Вечером: растереть ладони до тепла, вибрировать на точке (4 пальца ниже пупка) 3-5 минут, представляя тепло внутри.', strong: true},
+                        {icon: '🍵', title: 'Утренний согревающий напиток', desc: 'За 20-30 мин до завтрака: тёплая вода + лимон + имбирь (кусочек с ноготь, натереть).', strong: true},
+                        {icon: '🧦', title: 'Тепло и сон', desc: 'Перед сном тёплая ванна для ног (10 мин). Шерстяные носки на ночь (стимулирует Юн-Цюань).', strong: false},
+                        {icon: '🚶‍♀️', title: 'Движение', desc: 'Каждое утро — лёгкая гимнастика или ходьба 20 мин для разгона Ци.', strong: false}
+                    ]
+                },
+                spring: {
+                    goal: 'Сушить сырость, двигать застой, разгружать селезёнку',
+                    tasks: [
+                        {icon: '💨', title: '«Выдыхаем обиды»', desc: 'Утром: пальцы на правом подреберье, наклон вперёд со звуком «ХУ» на выдохе (3 раза). Затем руки в стороны, ладони на подреберье, улыбка, внимание туда 1-2 мин.', strong: true},
+                        {icon: '🚫', title: 'Критично исключить', desc: 'Молочные продукты, сладкое, мучное, жирное, бананы, арахис — всё, что создает сырость.', strong: true},
+                        {icon: '🍋', title: 'Утренний напиток', desc: 'Тёплая вода + лимон + имбирь (лимон «сушит» сырость, имбирь двигает жидкости).', strong: false},
+                        {icon: '🚶‍♀️', title: 'Движение', desc: 'Ходьба 30-40 мин ежедневно. Лёгкие прыжки или танцы для движения застоя.', strong: false}
+                    ]
+                },
+                winter: {
+                    goal: 'Одновременно согревать и осушать, убирать холодную сырость',
+                    tasks: [
+                        {icon: '🔥', title: 'Комбинация техник', desc: 'Вечером: вибрационный массаж CV4. Утром: упражнение «Выдыхаем обиды» (с акцентом на согревание).', strong: true},
+                        {icon: '🥣', title: 'Питание', desc: 'Только тёплая пища! Каши (гречка, рис), тушёные овощи, супы-пюре, имбирь, корица, чёрный перец. Никакого холодного и сырого!', strong: true},
+                        {icon: '🧦', title: 'Тепло', desc: 'Шерстяные носки каждую ночь. При отёках — тёплая ванна с морской солью через день (15 мин).', strong: false},
+                        {icon: '🦶', title: 'SP6 обязательно', desc: 'Массаж 30+30 раз ежедневно — помогает при холодной сырости.', strong: false}
+                    ]
+                }
+            };
+
+            const plan = plans[constitutionData.type];
+            let html = `
+                <h3 class="serif text-2xl font-bold mb-4 text-gray-900">Рекомендации по типу: ${plan.goal}</h3>
+                <div class="space-y-4">
+            `;
+            
+            plan.tasks.forEach(task => {
+                const bgClass = task.strong ? 'bg-purple-50 border-l-4 border-purple-400' : 'bg-gray-50';
+                html += `
+                    <div class="${bgClass} rounded-lg p-4">
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-3">${task.icon}</span>
+                            <div>
+                                <h4 class="font-bold text-gray-900">${task.title}</h4>
+                                <p class="text-sm text-gray-700 mt-1">${task.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            document.getElementById('constitution-recommendations').innerHTML = html;
+        }
+
+        function renderStagnationPlan() {
+            const zoneContent = {
+                liver: {
+                    title: '🫁 Застой в ПЕЧЕНИ',
+                    color: 'green',
+                    items: [
+                        {title: 'Упражнение «Рубим дрова»', desc: 'Стоя, сцепите руки в замок. Поднимите над головой, с силой опустите вниз со звуком «ХА!» на выдохе. 10 раз, утром или днём (не вечером).'},
+                        {title: 'Точка ТАЙ-ЧУН (LV3)', desc: 'На стопе между 1-й и 2-й плюсневыми костями. Массаж по 2 минуты на каждой стопе перед сном.'},
+                        {title: 'Точка НЭЙ-ГУАНЬ (PC6)', desc: '3 пальца выше запястья со стороны ладони. При гневе — нажать и 5 глубоких вдохов.'},
+                        {title: 'Питание', desc: 'Добавить: зелень, свёкла, лимоны, зелёный чай. Исключить: жареное, жирное, алкоголь, много кофе.'}
+                    ]
+                },
+                pelvis: {
+                    title: '🌸 Застой в МАЛОМ ТАЗЕ',
+                    color: 'pink',
+                    items: [
+                        {title: '«Выдыхаем обиды» (модификация)', desc: 'Пальцы на левое подреберье (селезёнка). Наклон со звуком «ХУ» (3 раза). Затем руки в стороны, ладони на левое подреберье, улыбка, внимание туда 1-2 мин.'},
+                        {title: 'Тепло на низ живота', desc: 'Каждый вечер грелка или мешочек с солью на низ живота 15-20 минут.'},
+                        {title: 'Точка САНЬ-ИНЬ-ЦЗЯО (SP6)', desc: '4 пальца выше внутренней лодыжки. 30 раз в одну сторону, 30 в другую. Можно аку-пластырь на сутки.'},
+                        {title: 'Движение', desc: 'Ежедневная ходьба не менее 30 минут. Избегайте длительного сидения! Плавание.'}
+                    ]
+                },
+                chest: {
+                    title: '💙 Застой в ГРУДНОЙ КЛЕТКЕ',
+                    color: 'blue',
+                    items: [
+                        {title: '«Раскрытие грудной клетки»', desc: 'Растереть ключицы. Наклон вперёд, захватить ключицу у груди, отвести плечо назад (3 раза). Повторить для средней и плечевой части ключицы. Растереть, простучать под ключицами, разотреть 7-й шейный позвонок.'},
+                        {title: 'Дыхательная практика', desc: 'Лёжа на спине, рука на груди, другая на животе. Вдох носом — живот поднимается, грудь почти не двигается. 10 раз утром и вечером.'},
+                        {title: 'Эмоциональная разгрузка', desc: 'Дневник «писем без отправки» — выписать обиды и порвать. Или пение (даже без голоса) — вибрация выводит застой.'},
+                        {title: 'Массаж', desc: 'Лёгкими круговыми движениями от центра груди к подмышкам. Тёплое кунжутное или оливковое масло.'}
+                    ]
+                }
+            };
+
+            let html = '<h3 class="serif text-2xl font-bold mb-4 text-gray-900">Рекомендации по зонам застоя</h3><div class="space-y-6">';
+            
+            stagnationData.zones.forEach(zone => {
+                const data = zoneContent[zone];
+                html += `
+                    <div class="border-2 border-${data.color}-200 rounded-xl p-6 bg-${data.color}-50">
+                        <h4 class="font-bold text-lg text-${data.color}-900 mb-4">${data.title}</h4>
+                        <div class="space-y-3">
+                `;
+                
+                data.items.forEach(item => {
+                    html += `
+                        <div class="bg-white/80 rounded-lg p-3">
+                            <h5 class="font-semibold text-gray-900 text-sm">${item.title}</h5>
+                            <p class="text-sm text-gray-700 mt-1">${item.desc}</p>
+                        </div>
+                    `;
+                });
+                
+                html += '</div></div>';
+            });
+            
+            if (stagnationData.zones.length > 1) {
+                html += `
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+                        <p class="text-sm text-yellow-800">
+                            <strong>При комбинации зон:</strong> Чередуйте упражнения по дням или делайте утром одно, вечером другое. 
+                            Главное — охватить все активные зоны в течение недели.
+                        </p>
+                    </div>
+                `;
+            }
+            
+            html += '</div>';
+            document.getElementById('stagnation-recommendations').innerHTML = html;
         }
 
         function resetAll() {
-            selectedConst.fill(false);
-            selectedStag.fill(false);
-            renderAll();
-            document.getElementById('resultArea').style.display = 'none';
+            constitutionData = { answers: {}, type: '', scores: {} };
+            stagnationData = { answers: {}, zones: [] };
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+                cb.closest('.option-card')?.classList.remove('selected');
+            });
+            showScreen('screen-intro');
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            renderAll();
-            const submitBtn = document.getElementById('submitBtn');
-            const resetBtn = document.getElementById('resetBtn');
-            if (submitBtn) submitBtn.addEventListener('click', showResult);
-            if (resetBtn) resetBtn.addEventListener('click', resetAll);
-        });
-    })();
-</script>
+    </script>
 </body>
 </html>
