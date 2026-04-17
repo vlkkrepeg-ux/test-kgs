@@ -76,13 +76,13 @@
                 <h2 class="serif text-4xl font-bold mb-4 text-gray-900">Диагностика на месяц</h2>
                 <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
                     Пройдите два последовательных теста, чтобы получить персональный план восстановления 
-                    с учётом вашего типа конституции (включая смешанные), зон застоя и базовых точек.
+                    с учётом вашего типа конституции (включая смешанные), зон застоя и базовых точек для укрепления организма.
                 </p>
                 
                 <div class="grid md:grid-cols-2 gap-6 text-left mb-8">
                     <div class="bg-purple-50 rounded-xl p-6">
                         <h3 class="font-bold text-purple-900 mb-2">Шаг 1: Тип конституции</h3>
-                        <p class="text-sm text-purple-800">4 блока (А-Д), 20 вопросов. Определение сезона тела с учётом цикла. При смешанном типе — чередование практик по неделям.</p>
+                        <p class="text-sm text-purple-800">4 блока (А-Д), 20 вопросов. Определение сезона тела (Лето/Осень/Весна/Зима) с учётом цикла. При смешанном типе — чередование практик по неделям.</p>
                     </div>
                     <div class="bg-pink-50 rounded-xl p-6">
                         <h3 class="font-bold text-pink-900 mb-2">Шаг 2: Зоны застоя</h3>
@@ -102,7 +102,7 @@
                 <h2 class="serif text-2xl font-bold mb-2 text-center text-gray-900">Тест 1: Определение типа конституции</h2>
                 <p class="text-center text-gray-500 text-sm mb-6">Блоки А-Д: Тело, Энергия, Сон, Цикл</p>
                 
-                <!-- Blocks A-D (same as before) -->
+                <!-- Block A -->
                 <div class="mb-8">
                     <h3 class="font-bold text-purple-900 border-b pb-2 mb-4">Блок А. Ваше тело</h3>
                     <div class="space-y-3">
@@ -125,12 +125,13 @@
                     </div>
                 </div>
 
+                <!-- Block B -->
                 <div class="mb-8">
                     <h3 class="font-bold text-purple-900 border-b pb-2 mb-4">Блок Б. Ваша энергия</h3>
                     <div class="space-y-3">
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="winter">
                             <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="b1">
-                            <span class="font-semibold text-purple-700">Б1.</span> Утром встаю уже уставшей. Весь день как выжатый лимон.
+                            <span class="font-semibold text-purple-700">Б1.</span> Утром встаю уже уставшей. Весь день как выжатый лимон. Хочется лечь и не вставать.
                         </label>
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
                             <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="b2">
@@ -138,25 +139,26 @@
                         </label>
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="spring">
                             <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="b3">
-                            <span class="font-semibold text-purple-700">Б3.</span> Тяжесть в теле, как будто налили воды. Всё делаю медленно.
+                            <span class="font-semibold text-purple-700">Б3.</span> Тяжесть в теле, как будто налили воды. Всё делаю медленно, через силу.
                         </label>
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn">
                             <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="b4">
-                            <span class="font-semibold text-purple-700">Б4.</span> Энергии мало, но это «пустота». Тихо, спокойно, но без огня.
+                            <span class="font-semibold text-purple-700">Б4.</span> Энергии мало, но это не бессилие, а скорее «пустота». Тихо, спокойно, но без огня.
                         </label>
                     </div>
                 </div>
 
+                <!-- Block C -->
                 <div class="mb-8">
                     <h3 class="font-bold text-purple-900 border-b pb-2 mb-4">Блок В. Ваш сон</h3>
                     <div class="space-y-3">
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="winter">
                             <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="c1">
-                            <span class="font-semibold text-purple-700">В1.</span> Просыпаюсь в 3–4 утра и не могу уснуть.
+                            <span class="font-semibold text-purple-700">В1.</span> Засыпаю нормально, но просыпаюсь в 3–4 утра и не могу уснуть до утра.
                         </label>
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="summer">
                             <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="c2">
-                            <span class="font-semibold text-purple-700">В2.</span> Не могу уснуть. Мысли крутятся, диалоги в голове.
+                            <span class="font-semibold text-purple-700">В2.</span> Не могу уснуть. Мысли крутятся, диалоги в голове, прокручиваю день.
                         </label>
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="spring">
                             <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="c3">
@@ -164,11 +166,12 @@
                         </label>
                         <label class="option-card block p-4 border-2 border-gray-200 rounded-xl cursor-pointer" data-type="autumn">
                             <input type="checkbox" class="const-check mt-1 mr-3 w-5 h-5" data-id="c4">
-                            <span class="font-semibold text-purple-700">В4.</span> Сплю 7–8 часов, но встаю разбитой.
+                            <span class="font-semibold text-purple-700">В4.</span> Сплю 7–8 часов, но встаю разбитой, как будто не спала вообще.
                         </label>
                     </div>
                 </div>
 
+                <!-- Block D -->
                 <div class="mb-8">
                     <h3 class="font-bold text-purple-900 border-b pb-2 mb-4">Блок Д. Ваш цикл и женское здоровье</h3>
                     <div class="space-y-3">
@@ -357,7 +360,7 @@
             <!-- Common Points: SP6 -->
             <div class="bg-white rounded-3xl shadow-xl p-8">
                 <h3 class="serif text-2xl font-bold mb-6 text-purple-900 flex items-center">
-                    <span class="mr-3">🦶</span> 1. Обязательно для всех типов: Точка САНЬ-ИНЬ-ЦЗЯО (SP6)
+                    <span class="mr-3">🦶</span> 1. Обязательно для всех типов: Точка Сань-Инь-Цзяо (SP6)
                 </h3>
                 <div class="bg-purple-50 rounded-xl p-6">
                     <div class="grid md:grid-cols-2 gap-6 mb-4">
@@ -383,15 +386,15 @@
                 </div>
             </div>
 
-            <!-- Kidney Points with KI3 added -->
+            <!-- Kidney Points with Full Names -->
             <div class="bg-white rounded-3xl shadow-xl p-8">
                 <h3 class="serif text-2xl font-bold mb-6 text-indigo-900 flex items-center">
                     <span class="mr-3">🔥</span> 2. Точки для укрепления почек (ежедневно)
                 </h3>
 
-                <!-- KI3 - NEW -->
+                <!-- KI3 - Full Name -->
                 <div class="bg-teal-50 rounded-xl p-6 mb-6 border-2 border-teal-200">
-                    <h4 class="font-bold text-teal-900 text-lg mb-3">👣 ТАЙ-СИ (KI3) – «Великий поток»</h4>
+                    <h4 class="font-bold text-teal-900 text-lg mb-3">👣 Тай-Си (KI3) – «Великий поток»</h4>
                     <div class="grid md:grid-cols-2 gap-4 mb-3">
                         <div>
                             <h5 class="font-semibold text-teal-800 text-sm mb-1">Где искать:</h5>
@@ -403,13 +406,13 @@
                         </div>
                     </div>
                     <div class="bg-white rounded-lg p-3 text-sm text-gray-700 border-l-4 border-teal-400">
-                        <strong>Эффект:</strong> Ваша главная точка для питания энергии Инь почек и общего укрепления всей системы почек. Помогает при болях в пояснице, головокружении, звоне в ушах, выпадении волос, а также при чувстве жара в ладонях и стопах.
+                        <strong>Эффект:</strong> Ваша главная точка для питания энергии Инь почек и общего укрепления всей системы почек. Она помогает при болях в пояснице, головокружении, звоне в ушах, выпадении волос, а также при чувстве жара в ладонях и стопах.
                     </div>
                 </div>
 
-                <!-- CV4 with Table -->
+                <!-- CV4 - Full Name -->
                 <div class="bg-indigo-50 rounded-xl p-6 mb-6">
-                    <h4 class="font-bold text-indigo-900 text-lg mb-3">ГУАНЬ-ЮАНЬ (CV4) – «Море энергии»</h4>
+                    <h4 class="font-bold text-indigo-900 text-lg mb-3">Гуань-Юань (CV4) – «Море энергии»</h4>
                     <p class="text-sm text-gray-700 mb-4"><strong>Где найти:</strong> на средней линии живота, на <strong>4 пальца ниже пупка</strong>.</p>
                     
                     <div class="overflow-x-auto">
@@ -427,11 +430,11 @@
                                 </tr>
                                 <tr class="table-row border-b border-gray-100">
                                     <td class="p-3 text-gray-800 font-medium">Приливы с жаром, потливость, беспокойство, бессонница</td>
-                                    <td class="p-3 text-gray-700"><strong>Мягкое успокаивающее давление:</strong> лёжа на спине, подушечкой большого пальца надавить на точку и делать круговые движения по часовой стрелке 3–5 минут (<span class="text-red-600 font-bold">не греть!</span>).</td>
+                                    <td class="p-3 text-gray-700"><strong>Мягкое успокаивающее давление:</strong> лёжа на спине, подушечкой большого пальца надавить на точку Гуань-Юань (CV4) и делать круговые движения по часовой стрелке 3–5 минут (<span class="text-red-600 font-bold">не греть!</span>).</td>
                                 </tr>
                                 <tr class="table-row">
                                     <td class="p-3 text-gray-800 font-medium">Опущение органов, чувство тяжести внизу живота, хронические запоры</td>
-                                    <td class="p-3 text-gray-700"><strong>Стимуляция для поднятия энергии:</strong> утром вибрационное постукивание кончиками пальцев по точке 2–3 минуты, затем массаж тёплой ладонью по часовой стрелке 5 минут.</td>
+                                    <td class="p-3 text-gray-700"><strong>Стимуляция для поднятия энергии:</strong> утром вибрационное постукивание кончиками пальцев по точке Гуань-Юань (CV4) 2–3 минуты, затем массаж тёплой ладонью по часовой стрелке 5 минут.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -442,9 +445,9 @@
                     </div>
                 </div>
 
-                <!-- GV4 -->
+                <!-- GV4 - Full Name -->
                 <div class="bg-blue-50 rounded-xl p-6 mb-6">
-                    <h4 class="font-bold text-blue-900 text-lg mb-3">МИН-МЭНЬ (GV4) – «Врата жизни»</h4>
+                    <h4 class="font-bold text-blue-900 text-lg mb-3">Мин-Мэнь (GV4) – «Врата жизни»</h4>
                     <p class="text-sm text-gray-700 mb-3"><strong>Где найти:</strong> на спине, между остистыми отростками 2-го и 3-го поясничных позвонков (примерно напротив пупка).</p>
                     
                     <ul class="space-y-2 text-sm text-gray-700 mb-3">
@@ -454,7 +457,7 @@
                         </li>
                         <li class="flex items-start">
                             <span class="text-blue-600 mr-2">•</span>
-                            <span>При замерзании, в холодный сезон, при холодных руках и ногах – наклейте <strong>перцовый пластырь</strong> на эту точку</span>
+                            <span>При замерзании, в холодный сезон, при холодных руках и ногах – наклейте <strong>перцовый пластырь</strong> на точку Мин-Мэнь (GV4)</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-blue-600 mr-2">•</span>
@@ -471,17 +474,17 @@
                     </div>
                 </div>
 
-                <!-- KI1 -->
+                <!-- KI1 - Full Name -->
                 <div class="bg-gray-50 rounded-xl p-6">
-                    <h4 class="font-bold text-gray-900 text-lg mb-3">ЮН-ЦЮАНЬ (KI1) – «Бурлящий родник»</h4>
+                    <h4 class="font-bold text-gray-900 text-lg mb-3">Юн-Цюань (KI1) – «Бурлящий родник»</h4>
                     <p class="text-sm text-gray-700 mb-3"><strong>Где найти:</strong> на стопе, под подушечкой (в ямке при согнутых пальцах).</p>
                     
                     <div class="grid md:grid-cols-2 gap-4 mb-3">
                         <div class="bg-white p-3 rounded border border-gray-200">
-                            <p class="text-sm text-gray-700"><strong>Способ 1:</strong> Наклеить перцовый пластырь на ночь (можно на обе стопы)</p>
+                            <p class="text-sm text-gray-700"><strong>Способ 1:</strong> Наклеить перцовый пластырь на ночь на точку Юн-Цюань (KI1) на обе стопы</p>
                         </div>
                         <div class="bg-white p-3 rounded border border-gray-200">
-                            <p class="text-sm text-gray-700"><strong>Способ 2:</strong> Каждую ночь надевать тёплые шерстяные носки</p>
+                            <p class="text-sm text-gray-700"><strong>Способ 2:</strong> Каждую ночь надевать тёплые шерстяные носки (стимулируют точку Юн-Цюань)</p>
                         </div>
                     </div>
                     
@@ -539,7 +542,7 @@
                 </div>
             </div>
 
-            <!-- Schedule Summary -->
+            <!-- Schedule Summary with Full Names -->
             <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl shadow-xl p-8 border-2 border-gray-200">
                 <h3 class="serif text-2xl font-bold mb-6 text-gray-900">📅 Итоговая схема дня</h3>
                 
@@ -548,10 +551,10 @@
                         <h4 class="font-bold text-gray-800 mb-3 border-b pb-2 text-lg">Утро (натощак или до обеда)</h4>
                         <ul class="space-y-3 text-sm text-gray-700">
                             <li class="flex items-start"><span class="text-purple-600 mr-2 text-lg">●</span>
-                                <div><strong>Точка SP6</strong> — 30+30 раз (обязательно)</div>
+                                <div><strong>Сань-Инь-Цзяо (SP6)</strong> — 30+30 раз (обязательно)</div>
                             </li>
                             <li class="flex items-start"><span class="text-teal-600 mr-2 text-lg">●</span>
-                                <div><strong>Точка KI3 (Тай-Си)</strong> — 2-3 минуты на каждой ноге (питание Инь почек)</div>
+                                <div><strong>Тай-Си (KI3)</strong> — 2-3 минуты на каждой ноге (питание Инь почек)</div>
                             </li>
                             <li class="flex items-start"><span class="text-orange-600 mr-2 text-lg">●</span>
                                 <div><strong>«Небесный барабан»</strong> — 2-3 подхода</div>
@@ -566,7 +569,7 @@
                                 <div>Упражнения по <strong>зонам застоя</strong> (если выявлены)</div>
                             </li>
                             <li class="flex items-start"><span class="text-indigo-600 mr-2 text-lg">●</span>
-                                <div>При опущении органов: <strong>CV4 (постукивание)</strong></div>
+                                <div>При опущении органов: <strong>Гуань-Юань (CV4)</strong> — постукивание</div>
                             </li>
                         </ul>
                     </div>
@@ -574,13 +577,13 @@
                         <h4 class="font-bold text-gray-800 mb-3 border-b pb-2 text-lg">Вечер (перед сном)</h4>
                         <ul class="space-y-3 text-sm text-gray-700">
                             <li class="flex items-start"><span class="text-indigo-600 mr-2 text-lg">●</span>
-                                <div><strong>Точка CV4 (Гуань-Юань)</strong> — по таблице (согревание или массаж)</div>
+                                <div><strong>Гуань-Юань (CV4)</strong> — по таблице (согревание или массаж)</div>
                             </li>
                             <li class="flex items-start"><span class="text-blue-600 mr-2 text-lg">●</span>
-                                <div><strong>Точка GV4 (Мин-Мэнь)</strong> — перцовый пластырь или тепло (при холоде)</div>
+                                <div><strong>Мин-Мэнь (GV4)</strong> — перцовый пластырь или тепло (при холоде)</div>
                             </li>
                             <li class="flex items-start"><span class="text-gray-600 mr-2 text-lg">●</span>
-                                <div><strong>Точка KI1 (Юн-Цюань)</strong> — шерстяные носки или перцовый пластырь</div>
+                                <div><strong>Юн-Цюань (KI1)</strong> — шерстяные носки или перцовый пластырь</div>
                             </li>
                             <li class="flex items-start"><span class="text-purple-600 mr-2 text-lg">●</span>
                                 <div>Дыхательные практики по типу (трубочка для Лета)</div>
@@ -594,7 +597,7 @@
 
                 <div class="mt-6 bg-red-50 rounded-lg p-4 border-l-4 border-red-400">
                     <p class="text-red-800 text-sm">
-                        <strong>Противопоказания:</strong> Точки акупрессуры (особенно SP6, LV3) не используются при беременности. 
+                        <strong>Противопоказания:</strong> Точки акупрессуры (особенно Сань-Инь-Цзяо (SP6), Тай-Чун (LV3)) не используются при беременности. 
                         При острых болях, подозрении на онкологию или обострении хронических заболеваний проконсультируйтесь с врачом.
                     </p>
                 </div>
@@ -618,10 +621,10 @@
         let constitutionData = {
             answers: {},
             type: '',
-            secondaryType: '', // for mixed types
+            secondaryType: '',
             scores: {},
             isMixed: false,
-            sortedTypes: [] // store sorted array of [type, score]
+            sortedTypes: []
         };
         
         let stagnationData = {
@@ -698,7 +701,6 @@
                 if (scores[type] !== undefined) scores[type]++;
             });
 
-            // Sort by score descending
             const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
             constitutionData.scores = scores;
             constitutionData.sortedTypes = sorted;
@@ -706,11 +708,10 @@
             const maxScore = sorted[0][1];
             const secondScore = sorted[1][1];
             
-            // Check if mixed (difference <= 1 and second score > 0)
             if ((maxScore - secondScore) <= 1 && secondScore > 0) {
                 constitutionData.isMixed = true;
-                constitutionData.type = sorted[0][0]; // primary (higher score)
-                constitutionData.secondaryType = sorted[1][0]; // secondary
+                constitutionData.type = sorted[0][0];
+                constitutionData.secondaryType = sorted[1][0];
             } else {
                 constitutionData.isMixed = false;
                 constitutionData.type = sorted[0][0];
@@ -765,7 +766,7 @@
             document.getElementById('progress-container').classList.add('hidden');
 
             renderConstitutionResult();
-            renderMixedSchedule(); // New function for mixed types
+            renderMixedSchedule();
             renderStagnationResult();
             renderConstitutionSpecific();
             renderStagnationPlan();
@@ -805,7 +806,7 @@
                             </div>
                         </div>
                         <div class="mt-4 bg-purple-50 p-3 rounded-lg text-sm text-purple-800">
-                            <strong>Схема работы:</strong> Начните с «${typeNames[primary]}» (1 и 3 недели), затем добавьте «${typeNames[secondary]}» (2 и 4 недели). См. подробный план ниже.
+                            <strong>Схема работы:</strong> Начните с «${typeNames[primary]}» (1 и 3 недели), затем добавьте «${typeNames[secondary]}» (2 и 4 недели).
                         </div>
                     </div>
                 `;
@@ -848,7 +849,7 @@
                                 <span class="bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded mr-2">НЕДЕЛИ 1+3</span>
                                 <span class="font-bold text-gray-900">${primary}</span>
                             </div>
-                            <p class="text-sm text-gray-600">Акцент на точках и практиках для типа «${primary}». Основная работа по устранению главных симптомов.</p>
+                            <p class="text-sm text-gray-600">Акцент на точках и практиках для типа «${primary}».</p>
                         </div>
                         
                         <div class="bg-white rounded-lg p-4 shadow-sm">
@@ -856,12 +857,12 @@
                                 <span class="bg-gray-500 text-white text-xs font-bold px-2 py-1 rounded mr-2">НЕДЕЛИ 2+4</span>
                                 <span class="font-bold text-gray-900">${secondary}</span>
                             </div>
-                            <p class="text-sm text-gray-600">Переход на точки и практики для типа «${secondary}». Углубление работы со второй системой.</p>
+                            <p class="text-sm text-gray-600">Переход на точки и практики для типа «${secondary}».</p>
                         </div>
                     </div>
                     
                     <div class="bg-white rounded-lg p-3 text-sm text-gray-700">
-                        <strong>Важно:</strong> Точка SP6 (Сань-Инь-Цзяо) и точки для почек (KI3, CV4, GV4, KI1) делаются <strong>ежедневно независимо от недели</strong>. Чередование касается только специфических практик для типа (дыхание, питание, специфические точки).
+                        <strong>Важно:</strong> Точка Сань-Инь-Цзяо (SP6), Тай-Си (KI3), Гуань-Юань (CV4), Мин-Мэнь (GV4) и Юн-Цюань (KI1) делаются <strong>ежедневно независимо от недели</strong>.
                     </div>
                 </div>
             `;
@@ -893,13 +894,11 @@
         }
 
         function renderConstitutionSpecific() {
-            // If mixed type, show both recommendations with week schedule
             if (constitutionData.isMixed) {
                 renderMixedConstitutionPlans();
                 return;
             }
 
-            // Single type - original logic
             const specificPlans = {
                 summer: `
                     <div class="bg-yellow-50 rounded-2xl p-6 border-2 border-yellow-200">
@@ -912,11 +911,10 @@
                                 <li>Закройте рот, выдохните через нос</li>
                                 <li>Повторите <strong>5–7 раз</strong></li>
                             </ol>
-                            <p class="text-sm text-yellow-800 mt-2 bg-yellow-100 p-2 rounded"><strong>Когда:</strong> Каждый вечер перед сном, а также при внезапном приливе жара.</p>
+                            <p class="text-sm text-yellow-800 mt-2 bg-yellow-100 p-2 rounded"><strong>Когда:</strong> Каждый вечер перед сном.</p>
                         </div>
                         <div class="bg-red-50 rounded-lg p-3 text-sm text-red-800">
-                            <strong>Исключить:</strong> кофе, острые специи, алкоголь.<br>
-                            <strong>Добавить:</strong> индейку, сельдерей, огурец, мяту.
+                            <strong>Исключить:</strong> кофе, острые специи, алкоголь.
                         </div>
                     </div>
                 `,
@@ -930,7 +928,7 @@
                                 <li><strong>Чёрный кунжут</strong></li>
                                 <li>Тёплые каши, тыква, свёкла</li>
                             </ul>
-                            <p class="text-sm text-orange-800 mt-2 bg-orange-100 p-2 rounded"><strong>CV4:</strong> используйте метод согревания (мешочек с солью или перцовый пластырь на ночь).</p>
+                            <p class="text-sm text-orange-800 mt-2 bg-orange-100 p-2 rounded"><strong>Гуань-Юань (CV4):</strong> используйте метод согревания (соль/пластырь).</p>
                         </div>
                     </div>
                 `,
@@ -945,10 +943,7 @@
                                 <li>Лимон (кружок)</li>
                                 <li>Имбирь (кусочек с ноготь)</li>
                             </ol>
-                            <p class="text-sm text-blue-800 mt-2 bg-blue-100 p-2 rounded">Если нельзя лимон/имбирь — работаем только с точкой SP6.</p>
-                        </div>
-                        <div class="bg-red-50 rounded-lg p-3 text-sm text-red-800">
-                            <strong>Исключить:</strong> молочные продукты, сладкое, бананы.
+                            <p class="text-sm text-blue-800 mt-2 bg-blue-100 p-2 rounded">Если нельзя лимон/имбирь — работаем только с точкой Сань-Инь-Цзяо (SP6).</p>
                         </div>
                     </div>
                 `,
@@ -956,7 +951,8 @@
                     <div class="bg-gray-50 rounded-2xl p-6 border-2 border-gray-300">
                         <h3 class="serif text-2xl font-bold mb-4 text-gray-900">❄️ Специфические рекомендации для «Зимнего сада»</h3>
                         <div class="bg-white rounded-xl p-4 mb-4">
-                            <h4 class="font-bold text-gray-900 mb-2">Согреваем ноги — согреваем всё тело: Точка Юн-Цюань (KI1)</h4>
+                            <h4 class="font-bold text-gray-900 mb-2">Согреваем ноги — согреваем всё тело</h4>
+                            <p class="text-sm text-gray-700 mb-2"><strong>Точка Юн-Цюань (KI1)</strong> — «Бурлящий родник»:</p>
                             <div class="grid md:grid-cols-2 gap-3 mb-3">
                                 <div class="bg-red-50 p-3 rounded text-sm">
                                     <strong>Вариант 1:</strong> Перцовый пластырь на ночь на обе стопы (8–10 часов).
@@ -965,11 +961,9 @@
                                     <strong>Вариант 2:</strong> Тёплые шерстяные носки на ночь.
                                 </div>
                             </div>
-                            <p class="text-sm text-gray-600">Точка KI1 — «Бурлящий родник». Когда она холодная, замёрз весь организм.</p>
                         </div>
                         <div class="bg-red-50 rounded-lg p-3 text-sm text-red-800">
-                            <strong>Исключить:</strong> всё сырое, холодное, мороженое.<br>
-                            <strong>Добавить:</strong> тёплую варёную пищу, имбирь, корицу.
+                            <strong>Исключить:</strong> всё сырое, холодное, мороженое.
                         </div>
                     </div>
                 `
@@ -991,7 +985,7 @@
                 autumn: {
                     title: 'Осенняя листва',
                     color: 'orange',
-                    item: 'CV4 — согревание (соль/пластырь). Питание: костные бульоны, чёрный кунжут.'
+                    item: 'Гуань-Юань (CV4) — согревание (соль/пластырь). Питание: костные бульоны, чёрный кунжут.'
                 },
                 spring: {
                     title: 'Весенняя вода',
@@ -1001,7 +995,7 @@
                 winter: {
                     title: 'Зимний сад',
                     color: 'gray',
-                    item: 'KI1 — перцовый пластырь или шерстяные носки на ночь. Только тёплая еда.'
+                    item: 'Юн-Цюань (KI1) — перцовый пластырь или шерстяные носки на ночь. Только тёплая еда.'
                 }
             };
 
@@ -1031,7 +1025,7 @@
                     </div>
                     
                     <div class="mt-4 bg-yellow-50 rounded-lg p-3 text-sm text-yellow-800 border border-yellow-200">
-                        <strong>Общие точки (ежедневно):</strong> SP6, KI3 (Тай-Си), CV4 (по состоянию), GV4 (при холоде), KI1.
+                        <strong>Общие точки (ежедневно):</strong> Сань-Инь-Цзяо (SP6), Тай-Си (KI3), Гуань-Юань (CV4), Мин-Мэнь (GV4) и Юн-Цюань (KI1).
                     </div>
                 </div>
             `;
@@ -1051,8 +1045,8 @@
                     color: 'green',
                     items: [
                         {title: '«Рубим дрова»', desc: 'Стоя, сцепите руки в замок. Поднимите над головой, опустите со звуком «ХА!» на выдохе. 10 раз, утром (не вечером).'},
-                        {title: 'Точка ТАЙ-ЧУН (LV3)', desc: 'На стопе между 1-й и 2-й плюсневыми костями. Массаж 2 минуты на каждой стопе перед сном.'},
-                        {title: 'Точка НЭЙ-ГУАНЬ (PC6)', desc: '3 пальца выше запястья. При гневе — нажать и 5 глубоких вдохов.'}
+                        {title: 'Точка Тай-Чун (LV3)', desc: 'На стопе между 1-й и 2-й плюсневыми костями. Массаж 2 минуты на каждой стопе перед сном.'},
+                        {title: 'Точка Нэй-Гуань (PC6)', desc: '3 пальца выше запястья со стороны ладони. При гневе — нажать и 5 глубоких вдохов.'}
                     ]
                 },
                 pelvis: {
@@ -1061,7 +1055,7 @@
                     items: [
                         {title: '«Выдыхаем обиды»', desc: 'Пальцы на левое подреберье. Наклон со звуком «ХУ» (3 раза). Затем улыбка, внимание туда 1–2 мин.'},
                         {title: 'Тепло на низ живота', desc: 'Грелка или мешочек с солью на низ живота 15–20 минут вечером.'},
-                        {title: 'SP6 (усиленно)', desc: '30+30 раз — помогает убрать отёчность и застой в тазу.'}
+                        {title: 'Сань-Инь-Цзяо (SP6) — усиленно', desc: '30+30 раз — помогает убрать отёчность и застой в тазу.'}
                     ]
                 },
                 chest: {
